@@ -1,0 +1,60 @@
+# DocuMind AI settings. Paths are relative to the project root (E:\Documind).
+
+seed: 42
+
+data:
+  hf_dataset: theatticusproject/cuad-qa
+  raw_dir: data/raw
+  processed_dir: data/processed
+  # The official CUAD "test" split (102 contracts) is kept untouched as our test set.
+  # Validation is carved out of the official "train" split (408 contracts) by contract
+  # title, so no contract appears in two splits: 0.125 * 408 = 51 validation contracts.
+  val_fraction_of_train: 0.125
+
+paths:
+  reports_dir: reports
+  checkpoints_dir: checkpoints
+
+# The 41 CUAD clause categories, copied from the real dataset (reports/cuad_inspection.json).
+categories:
+  - Document Name
+  - Parties
+  - Agreement Date
+  - Governing Law
+  - Expiration Date
+  - Anti-Assignment
+  - Effective Date
+  - License Grant
+  - Cap On Liability
+  - Audit Rights
+  - Insurance
+  - Post-Termination Services
+  - Exclusivity
+  - Minimum Commitment
+  - Revenue/Profit Sharing
+  - Non-Transferable License
+  - Rofr/Rofo/Rofn
+  - Ip Ownership Assignment
+  - Termination For Convenience
+  - Renewal Term
+  - Non-Compete
+  - Change Of Control
+  - Uncapped Liability
+  - Warranty Duration
+  - Covenant Not To Sue
+  - Volume Restriction
+  - Irrevocable Or Perpetual License
+  - Notice Period To Terminate Renewal
+  - Competitive Restriction Exception
+  - Liquidated Damages
+  - Joint Ip Ownership
+  - Affiliate License-Licensee
+  - No-Solicit Of Employees
+  - Non-Disparagement
+  - Source Code Escrow
+  - Affiliate License-Licensor
+  - No-Solicit Of Customers
+  - Most Favored Nation
+  - Third Party Beneficiary
+  - Unlimited/All-You-Can-Eat-License
+  - Price Restrictions

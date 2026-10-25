@@ -1,0 +1,387 @@
+{
+  "splits": {
+    "train": {
+      "rows": 22450,
+      "contracts": 408,
+      "rows_per_contract_(rows, contracts)": [
+        [
+          44,
+          40
+        ],
+        [
+          45,
+          37
+        ],
+        [
+          46,
+          31
+        ],
+        [
+          48,
+          27
+        ],
+        [
+          47,
+          23
+        ]
+      ],
+      "rows_with_no_answer": 11270,
+      "no_answer_fraction": 0.502,
+      "answers_per_row": {
+        "0": 11270,
+        "1": 11180
+      },
+      "offset_checks": 11180,
+      "offset_mismatches": 0,
+      "contracts_with_conflicting_context": 0,
+      "categories": 41,
+      "question_parse_failures": 0,
+      "id_vs_question_category_mismatches": 0,
+      "duplicate_title_category_pairs": 2123,
+      "id_suffix_values_top10": {
+        "0": 16728,
+        "1": 2123,
+        "2": 1246,
+        "3": 859,
+        "4": 476,
+        "5": 271,
+        "6": 198,
+        "7": 124,
+        "8": 92,
+        "9": 74
+      },
+      "answer_words_p50_p90_p99_max": [
+        31.0,
+        91.0,
+        208.0,
+        479.0
+      ],
+      "context_words_p50_p90_p99_max": [
+        5357.5,
+        18679.3,
+        41890.2,
+        45650.0
+      ],
+      "context_chars_p50_p90_p99_max": [
+        35960.5,
+        128120.3,
+        271611.7,
+        338211.0
+      ]
+    },
+    "test": {
+      "rows": 4182,
+      "contracts": 102,
+      "rows_per_contract_(rows, contracts)": [
+        [
+          41,
+          102
+        ]
+      ],
+      "rows_with_no_answer": 2938,
+      "no_answer_fraction": 0.7025,
+      "answers_per_row": {
+        "0": 2938,
+        "1": 762,
+        "2": 172,
+        "3": 89,
+        "4": 92,
+        "5": 52,
+        "6": 23,
+        "7": 19,
+        "8": 8,
+        "9": 8,
+        "10": 9,
+        "11": 3,
+        "12": 1,
+        "13": 1,
+        "16": 1,
+        "17": 2,
+        "18": 1,
+        "19": 1
+      },
+      "offset_checks": 2643,
+      "offset_mismatches": 0,
+      "contracts_with_conflicting_context": 0,
+      "categories": 41,
+      "question_parse_failures": 0,
+      "id_vs_question_category_mismatches": 0,
+      "duplicate_title_category_pairs": 0,
+      "id_suffix_values_top10": {
+        "none": 4182
+      },
+      "answer_words_p50_p90_p99_max": [
+        31.0,
+        91.0,
+        191.0,
+        461.0
+      ],
+      "context_words_p50_p90_p99_max": [
+        3910.5,
+        16515.9,
+        38486.2,
+        47733.0
+      ],
+      "context_chars_p50_p90_p99_max": [
+        25657.0,
+        111409.4,
+        249352.2,
+        300768.0
+      ]
+    }
+  },
+  "leakage": {
+    "train_vs_test": {
+      "shared_contract_titles": 0,
+      "shared_identical_contract_texts": 0
+    }
+  },
+  "categories": [
+    {
+      "category": "Document Name",
+      "rows": 521,
+      "no_answer_rows": 0,
+      "no_answer_fraction": 0.0
+    },
+    {
+      "category": "Parties",
+      "rows": 2114,
+      "no_answer_rows": 1,
+      "no_answer_fraction": 0.0005
+    },
+    {
+      "category": "Agreement Date",
+      "rows": 516,
+      "no_answer_rows": 40,
+      "no_answer_fraction": 0.0775
+    },
+    {
+      "category": "Governing Law",
+      "rows": 530,
+      "no_answer_rows": 73,
+      "no_answer_fraction": 0.1377
+    },
+    {
+      "category": "Expiration Date",
+      "rows": 559,
+      "no_answer_rows": 97,
+      "no_answer_fraction": 0.1735
+    },
+    {
+      "category": "Anti-Assignment",
+      "rows": 725,
+      "no_answer_rows": 136,
+      "no_answer_fraction": 0.1876
+    },
+    {
+      "category": "Effective Date",
+      "rows": 553,
+      "no_answer_rows": 120,
+      "no_answer_fraction": 0.217
+    },
+    {
+      "category": "License Grant",
+      "rows": 947,
+      "no_answer_rows": 255,
+      "no_answer_fraction": 0.2693
+    },
+    {
+      "category": "Cap On Liability",
+      "rows": 833,
+      "no_answer_rows": 235,
+      "no_answer_fraction": 0.2821
+    },
+    {
+      "category": "Audit Rights",
+      "rows": 872,
+      "no_answer_rows": 296,
+      "no_answer_fraction": 0.3394
+    },
+    {
+      "category": "Insurance",
+      "rows": 819,
+      "no_answer_rows": 344,
+      "no_answer_fraction": 0.42
+    },
+    {
+      "category": "Post-Termination Services",
+      "rows": 725,
+      "no_answer_rows": 328,
+      "no_answer_fraction": 0.4524
+    },
+    {
+      "category": "Exclusivity",
+      "rows": 695,
+      "no_answer_rows": 330,
+      "no_answer_fraction": 0.4748
+    },
+    {
+      "category": "Minimum Commitment",
+      "rows": 713,
+      "no_answer_rows": 345,
+      "no_answer_fraction": 0.4839
+    },
+    {
+      "category": "Revenue/Profit Sharing",
+      "rows": 710,
+      "no_answer_rows": 344,
+      "no_answer_fraction": 0.4845
+    },
+    {
+      "category": "Non-Transferable License",
+      "rows": 649,
+      "no_answer_rows": 372,
+      "no_answer_fraction": 0.5732
+    },
+    {
+      "category": "Rofr/Rofo/Rofn",
+      "rows": 741,
+      "no_answer_rows": 425,
+      "no_answer_fraction": 0.5735
+    },
+    {
+      "category": "Ip Ownership Assignment",
+      "rows": 666,
+      "no_answer_rows": 386,
+      "no_answer_fraction": 0.5796
+    },
+    {
+      "category": "Termination For Convenience",
+      "rows": 561,
+      "no_answer_rows": 327,
+      "no_answer_fraction": 0.5829
+    },
+    {
+      "category": "Renewal Term",
+      "rows": 539,
+      "no_answer_rows": 334,
+      "no_answer_fraction": 0.6197
+    },
+    {
+      "category": "Non-Compete",
+      "rows": 614,
+      "no_answer_rows": 391,
+      "no_answer_fraction": 0.6368
+    },
+    {
+      "category": "Change Of Control",
+      "rows": 606,
+      "no_answer_rows": 389,
+      "no_answer_fraction": 0.6419
+    },
+    {
+      "category": "Uncapped Liability",
+      "rows": 563,
+      "no_answer_rows": 399,
+      "no_answer_fraction": 0.7087
+    },
+    {
+      "category": "Warranty Duration",
+      "rows": 602,
+      "no_answer_rows": 435,
+      "no_answer_fraction": 0.7226
+    },
+    {
+      "category": "Covenant Not To Sue",
+      "rows": 563,
+      "no_answer_rows": 410,
+      "no_answer_fraction": 0.7282
+    },
+    {
+      "category": "Volume Restriction",
+      "rows": 581,
+      "no_answer_rows": 428,
+      "no_answer_fraction": 0.7367
+    },
+    {
+      "category": "Irrevocable Or Perpetual License",
+      "rows": 595,
+      "no_answer_rows": 440,
+      "no_answer_fraction": 0.7395
+    },
+    {
+      "category": "Notice Period To Terminate Renewal",
+      "rows": 519,
+      "no_answer_rows": 399,
+      "no_answer_fraction": 0.7688
+    },
+    {
+      "category": "Competitive Restriction Exception",
+      "rows": 548,
+      "no_answer_rows": 434,
+      "no_answer_fraction": 0.792
+    },
+    {
+      "category": "Liquidated Damages",
+      "rows": 561,
+      "no_answer_rows": 449,
+      "no_answer_fraction": 0.8004
+    },
+    {
+      "category": "Joint Ip Ownership",
+      "rows": 572,
+      "no_answer_rows": 464,
+      "no_answer_fraction": 0.8112
+    },
+    {
+      "category": "Affiliate License-Licensee",
+      "rows": 551,
+      "no_answer_rows": 451,
+      "no_answer_fraction": 0.8185
+    },
+    {
+      "category": "No-Solicit Of Employees",
+      "rows": 534,
+      "no_answer_rows": 451,
+      "no_answer_fraction": 0.8446
+    },
+    {
+      "category": "Non-Disparagement",
+      "rows": 532,
+      "no_answer_rows": 472,
+      "no_answer_fraction": 0.8872
+    },
+    {
+      "category": "Source Code Escrow",
+      "rows": 559,
+      "no_answer_rows": 497,
+      "no_answer_fraction": 0.8891
+    },
+    {
+      "category": "Affiliate License-Licensor",
+      "rows": 542,
+      "no_answer_rows": 487,
+      "no_answer_fraction": 0.8985
+    },
+    {
+      "category": "No-Solicit Of Customers",
+      "rows": 526,
+      "no_answer_rows": 476,
+      "no_answer_fraction": 0.9049
+    },
+    {
+      "category": "Most Favored Nation",
+      "rows": 520,
+      "no_answer_rows": 482,
+      "no_answer_fraction": 0.9269
+    },
+    {
+      "category": "Third Party Beneficiary",
+      "rows": 512,
+      "no_answer_rows": 478,
+      "no_answer_fraction": 0.9336
+    },
+    {
+      "category": "Unlimited/All-You-Can-Eat-License",
+      "rows": 522,
+      "no_answer_rows": 493,
+      "no_answer_fraction": 0.9444
+    },
+    {
+      "category": "Price Restrictions",
+      "rows": 522,
+      "no_answer_rows": 495,
+      "no_answer_fraction": 0.9483
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "grouping_stats": {
+    "train": {
+      "pairs_with_empty_and_answer_rows": 0,
+      "pairs_with_several_empty_rows": 0,
+      "duplicate_spans_removed": 0,
+      "overlapping_span_pairs": 277
+    },
+    "test": {
+      "pairs_with_empty_and_answer_rows": 0,
+      "pairs_with_several_empty_rows": 0,
+      "duplicate_spans_removed": 0,
+      "overlapping_span_pairs": 72
+    }
+  },
+  "splits": {
+    "train": {
+      "contracts": 357,
+      "examples": 14637,
+      "no_answer_examples": 9901,
+      "no_answer_fraction": 0.6764,
+      "answer_spans": 9688,
+      "min_positives_in_a_category": 9,
+      "categories_with_fewer_than_5_positives": []
+    },
+    "val": {
+      "contracts": 51,
+      "examples": 2091,
+      "no_answer_examples": 1369,
+      "no_answer_fraction": 0.6547,
+      "answer_spans": 1492,
+      "min_positives_in_a_category": 1,
+      "categories_with_fewer_than_5_positives": [
+        "Affiliate License-Licensor",
+        "Joint Ip Ownership",
+        "Most Favored Nation",
+        "Non-Disparagement",
+        "Price Restrictions",
+        "Source Code Escrow",
+        "Third Party Beneficiary",
+        "Unlimited/All-You-Can-Eat-License"
+      ]
+    },
+    "test": {
+      "contracts": 102,
+      "examples": 4182,
+      "no_answer_examples": 2938,
+      "no_answer_fraction": 0.7025,
+      "answer_spans": 2643,
+      "min_positives_in_a_category": 0,
+      "categories_with_fewer_than_5_positives": [
+        "Most Favored Nation",
+        "Price Restrictions",
+        "Source Code Escrow",
+        "Unlimited/All-You-Can-Eat-License"
+      ]
+    }
+  }
+}

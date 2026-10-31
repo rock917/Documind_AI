@@ -1,104 +1,381 @@
 # DocuMind AI
 
-Find a clause in a contract, see the exact passage highlighted on its page, and see how sure the model is. When a clause is missing, DocuMind simply says no.
+**Contract clause finder that shows the exact passage on the exact page, and says "not found" instead of guessing.**
 
-DocuMind checks **41 clause types** from the CUAD dataset (governing law, cap on liability, anti-assignment, audit rights, non-compete and so on). It is built around three ideas:
+![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-CPU%20%7C%20CUDA-EE4C2C?logo=pytorch&logoColor=white)
+![Transformers](https://img.shields.io/badge/Transformers-Legal--BERT-FFD21E?logo=huggingface&logoColor=black)
+![FastAPI](https://img.shields.io/badge/FastAPI-backend-009688?logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-144%20passing-brightgreen)
 
-- **Evidence, not summaries.** Every answer is the original passage, highlighted on the original page.
-- **A score you can read.** Each answer shows its score against the decision threshold, and close calls are flagged.
-- **It can say "not found".** The model is trained to recognise that a clause is absent, and a threshold chosen on validation data decides when to abstain.
+DocuMind AI reads a contract (PDF, Word, ODT, RTF or a scan) and checks it for the 41 clause types of the [CUAD](https://www.atticusprojectai.org/cuad) benchmark: governing law, termination, liability caps, audit rights, and so on. For every clause it finds, it returns the evidence passages, their page numbers and a confidence score, and highlights each passage on the original page so a reviewer can verify it in seconds.
 
-Everything in the clause finder runs on your own computer. An optional "Ask a question" mode sends your question and a few retrieved excerpts to Groq, only after you tick a permission box each time.
+The core is a Legal-BERT model fine-tuned for extractive question answering **with abstention**. An abstention threshold, chosen on a validation set and never on the test set, decides when the system stays silent. The project covers the full path: data preparation, training, evaluation against retrieval baselines, a production-style API, a web interface, OCR and Office support, an optional LLM question mode, tests, and containerised deployment.
 
-## What is in the app
+## Contents
 
-| Feature | What it does |
-| --- | --- |
-| Clause finder | Checks all 41 clause types in a PDF, ranks them by score, highlights the passage on the page. |
-| Word and other formats | `.docx`, `.doc`, `.odt` and `.rtf` files are converted to PDF with LibreOffice, then analysed. |
-| Scanned PDFs | PDFs with no text layer are read with Tesseract OCR first. Marked clearly as OCR text. |
-| Ask a question | Works on any document. Hybrid retrieval (BM25 + dense) finds excerpts, Groq writes a short cited answer, or replies exactly "Not found in the document." |
-| PDF report | A readable report: summary, every clause found with its passage and page, the clauses not found. |
-| JSON export | The full analysis (scores, margins, passages, highlight positions) for other tools. |
-| Interface | Light and dark theme, Back and Forward navigation, drag and drop, results kept in `storage\<id>\results.json`. |
+1. [Links](#links)
+2. [Features](#features)
+3. [Results](#results)
+4. [Architecture](#architecture)
+5. [Design decisions and trade-offs](#design-decisions-and-trade-offs)
+6. [Tech stack](#tech-stack)
+7. [Quick start](#quick-start-local)
+8. [Configuration](#configuration)
+9. [Docker and deployment](#docker-and-deployment)
+10. [API](#api)
+11. [Reproducing the training and evaluation](#reproducing-the-training-and-evaluation)
+12. [Testing](#testing)
+13. [Project layout](#project-layout)
+14. [Security and privacy](#security-and-privacy)
+15. [Limitations](#limitations)
+16. [Possible next steps](#possible-next-steps)
+17. [Acknowledgements](#acknowledgements)
+
+## Links
+
+- Code: https://github.com/rock917/Documind_AI
+- Model (Legal-BERT fine-tuned on CUAD-QA): https://huggingface.co/TheRock45/documind-legalbert-qa
+- Live demo: hosted on an Azure virtual machine that is switched on for demos, so it is not always up. Ask the author for a link.
+
+## Features
+
+- **Clause finder.** For each of the 41 CUAD clause types, the model returns the best passages (top 3), their pages and a score. Clauses below the threshold are reported as **Not found**. Clauses only just above it are flagged as a **close call**.
+- **Highlighted evidence.** The page image is rendered on the server with the matching words highlighted. Click a passage to jump to its page.
+- **Principled abstention.** The decision rule is tuned on validation data and never on test data (see [Results](#results)).
+- **Ask mode.** Ask your own question about any document. BM25 and dense retrieval are fused with reciprocal rank fusion, then a Groq-hosted model answers with page citations, or says `Not found in the document.` It is opt-in per question.
+- **Any document type.** PDF, Word (`.docx`, `.doc`), ODT and RTF (converted with LibreOffice), and scanned PDFs (OCR with Tesseract, up to 100 pages).
+- **Reports.** A readable PDF report of everything found, and a JSON export of the raw results.
+- **Interface.** A single-page web UI with a light/dark theme, history-based Back/Forward navigation and a live progress bar.
 
 ## Results
 
-All numbers below are on the **held-out test contracts**. The abstention threshold was chosen on the validation split only, and the test split was scored once. Nothing was tuned on it.
+The task is built from CUAD-QA, regrouped per (contract, clause type) so that "this clause is absent" is a first-class answer, as in SQuAD v2. The 41-way question set is run over each contract, and the threshold is applied to the *present score*: the best answer span's score minus the "no answer" score.
 
-| Model | AUPR | Precision at 80% recall | F1 with abstention | Absent clauses reported as not found | Present clauses found | Right passage in top 3 (flagged) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Legal-BERT (main) | 0.939 | 0.918 | 0.894 | 96.7% | 80.9% | 96.4% |
-| bert-base-uncased | 0.918 (95% CI 0.904 to 0.930) | 0.887 | 0.882 | 96.5% | 76.8% | 96.8% |
+Test-set results (threshold 8.690, chosen on the validation split of 51 contracts):
 
-- A model that always answers "not found" scores F1 0.703 on the same metric, so 0.894 is a real gain.
-- Validation: Legal-BERT AUPR 0.944, F1 0.881, threshold 8.690. bert-base AUPR 0.927, F1 0.867, threshold 9.077.
-- bert-base macro AUPR over 40 categories: 0.833.
-- Legal-BERT was ahead of bert-base on every headline metric except the top-3 passage rate. I describe it as "consistently ahead", not "significantly ahead", because I have not run a paired significance test between the two.
-- Metrics: AUPR (present vs absent), precision at 80% recall, token F1 with abstention, hit@k for passage retrieval, risk-coverage curves, bootstrap confidence intervals resampled by contract.
-- Retrieval baselines (BM25, dense `bge-small`, hybrid reciprocal rank fusion), risk-coverage plots and per-category numbers are in the `reports\` folder.
+| Metric | Legal-BERT | bert-base |
+|---|---|---|
+| AUPR (present vs. absent) | **0.939** | 0.918 |
+| Precision at 80% recall | **0.918** | 0.887 |
+| F1 | **0.894** | 0.882 |
+| Absent clauses correctly skipped | **96.7%** | 96.5% |
+| Present clauses found | **80.9%** | 76.8% |
+| Right passage in the top 3 (flagged clauses) | 96.4% | **96.8%** |
 
-### Speed and OCR (measured on a laptop with a 4 GB GPU)
+- Per-clause numbers, risk-coverage curves and error analysis are in [`reports/`](reports/).
+- bert-base AUPR confidence interval: 0.904 to 0.930.
+- Legal-BERT is ahead on every headline metric except top-3 passage hit rate. No paired significance test was run between the two models, so treat the gap as indicative.
+- About 19% of present clauses are missed, which is the price of a cautious threshold.
 
-| Measurement | Result |
-| --- | --- |
-| 5,381-word contract | 21.8 s with an idle GPU |
-| 40-page, 12,998-word licence | 42 to 57 s (about 3 to 4 s per 1,000 words) |
-| 30-page contract | 32 s |
-| OCR on a printed 6-page research paper | 93.4% of words recovered, 8.0% extra garbled words, about 7.7 s per page |
-| OCR on a 47-page handwritten notebook | 183 s in total, but the text is mostly garbled (handwriting is not supported) |
+## Architecture
 
-The OCR accuracy figure was measured on a research paper, not on a contract.
+### System overview
 
-## How it works
+```mermaid
+flowchart TB
+    UI["Browser: single-page UI (upload, results, viewer, Ask)"]
+    subgraph Server["FastAPI service"]
+        direction TB
+        API["REST API"]
+        Q["Job queue"]
+        W["Worker thread, one job at a time"]
+        CF["ClauseFinder: Legal-BERT QA"]
+        RT["Retriever: BM25 + dense"]
+        RP["PDF report builder"]
+    end
+    subgraph Tools["Document tools"]
+        direction LR
+        LO["LibreOffice"]
+        TE["Tesseract OCR"]
+        MU["PyMuPDF"]
+    end
+    ST[("storage: original.pdf, results.json")]
+    HF["Hugging Face Hub: model weights"]
+    GQ["Groq API, opt-in"]
 
-1. **Text with positions.** PyMuPDF extracts every word with its page and bounding box, so any character span can be mapped back to highlight rectangles on the page.
-2. **Question answering.** CUAD is regrouped by (contract, category). Each of the 41 clause types is a question asked of the contract. Long contracts are cut into overlapping windows (384 tokens, stride 128) in the SQuAD v2 style, with the CLS token as the "no answer" option.
-3. **Present or absent.** `present_score = best span score - lowest null score`. A clause counts as found when the score is at or above the threshold chosen on validation data.
-4. **Ask mode.** The document is cut into 120-word chunks, ranked by BM25 and by `bge-small` embeddings, and merged with reciprocal rank fusion. The top excerpts are sent to Groq with an instruction to cite them and to answer exactly "Not found in the document." when the excerpts do not contain the answer.
-5. **Serving.** FastAPI with one worker thread (one GPU), a single-page web interface, and results written to `storage\`.
+    UI -->|"upload, poll, fetch pages"| API
+    API --> Q --> W
+    W --> CF
+    W --> Tools
+    W --> ST
+    API --> RP
+    API --> RT
+    RT -->|"question and excerpts only"| GQ
+    HF -.->|"loaded at startup"| CF
+```
 
-## Run it
+### Request lifecycle
 
-Windows, Python 3.13 in the `.venv313` virtual environment, an NVIDIA GPU is recommended.
+```mermaid
+sequenceDiagram
+    participant B as Browser
+    participant A as API
+    participant W as Worker
+    participant M as Legal-BERT
+    B->>A: POST /api/documents (file)
+    A->>A: convert Office to PDF, extract text and word boxes
+    A-->>B: document id (state: queued)
+    A->>W: enqueue job
+    opt no text layer
+        W->>W: OCR every page (Tesseract)
+    end
+    loop 41 clause types
+        W->>M: windows for this clause question
+        M-->>W: best spans and null score
+        W-->>A: progress (done / total)
+    end
+    W->>A: save results.json (state: done)
+    loop every 700 ms
+        B->>A: GET /api/documents/id
+        A-->>B: state, progress
+    end
+    B->>A: GET /api/documents/id/results
+    B->>A: GET /api/documents/id/page/n.png (highlighted)
+```
+
+### Document processing
+
+The model reads **one plain string**: every word of the document joined by single spaces. For each word the system records its character range in that string, its page and its box on the page. A predicted span `(char_start, char_end)` is therefore converted to page numbers and highlight rectangles by an exact lookup, with no fuzzy text matching. This is what makes the highlights reliable.
+
+Files go through a small preparation stage first:
+
+- Word, ODT and RTF files are converted to PDF with headless LibreOffice.
+- A PDF with no extractable text is treated as a scan. Each page is rendered at 200 DPI and OCR-ed with Tesseract (English), producing a PDF with an invisible text layer, so the rest of the pipeline is identical. OCR is capped at 100 pages, with a per-page time limit.
+
+### Clause detection
+
+1. **Windowing.** For each clause type there is one fixed question. The question and the contract are tokenised together and cut into overlapping windows of 384 tokens with a stride of 128.
+2. **Scoring.** The model gives every window start and end logits. The "no answer" score of a window is the start logit plus the end logit at the CLS token.
+3. **Decoding.** Per window, the best non-overlapping spans are kept. Per contract and clause, the best span over all windows is chosen, and
+   `present score = best span score - minimum null score over the windows` (the SQuAD v2 convention).
+4. **Decision.** If the present score reaches the threshold (8.690, from validation), the clause is **found** and the top 3 non-overlapping passages are returned with pages and highlight boxes. Otherwise the answer is **not found**. The margin above the threshold is stored, and a margin under 3 is shown as a close call.
+
+On a GPU the model runs in half precision.
+
+### Ask mode
+
+```mermaid
+flowchart LR
+    Q["Question"] --> BM["BM25 ranking"]
+    Q --> DN["Dense ranking (bge-small, FAISS)"]
+    BM --> RRF["Reciprocal rank fusion"]
+    DN --> RRF
+    RRF --> TOP["Top 6 chunks of the document"]
+    TOP --> LLM["Groq LLM, temperature 0"]
+    LLM --> ANS["Answer with citations, or: Not found in the document."]
+    ANS --> HL["Highlight cited chunks on the pages"]
+```
+
+- The document is cut into 120-word chunks with a stride of 60, once per document.
+- Only the question and the few retrieved excerpts are sent to Groq, never the whole file, and only when the user ticks consent for that question.
+- The system prompt forces the model to answer only from the numbered excerpts and to reply with an exact sentence when the answer is not there.
+
+### Training and evaluation pipeline
+
+```mermaid
+flowchart LR
+    D["CUAD: contracts + clause annotations"] --> S["Contract-level split: train / val / test"]
+    S --> W["Sliding windows with labels"]
+    W --> SM["Sample: all positives, some negatives, partial windows dropped"]
+    SM --> T["Fine-tune Legal-BERT for QA"]
+    T --> V["Pick the threshold on validation"]
+    V --> E["Evaluate once on test: AUPR, precision at recall, F1, top-3 hit rate"]
+    E --> R["reports/: logs, curves, error analysis"]
+```
+
+- **Contract-level splits.** No contract appears in more than one split, so there is no leakage between training and test.
+- **Window labels.** A window is *positive* if an answer lies fully inside it, *negative* if no answer overlaps it (the target is the CLS token), and *partial* if an answer is cut by the window edge. Partial windows are excluded from training, because calling them "no answer" would teach the model to ignore real clause text.
+- **Sampling.** Every positive window is kept, and only a random fraction of negatives, with separate rates for negatives from contracts that contain the clause elsewhere and from contracts that do not. Test windows are never sampled.
+- **Selection.** The abstention threshold is chosen on the validation split only.
+
+### Deployment
+
+```mermaid
+flowchart LR
+    GH["GitHub repo"] -->|"git clone"| VM["Azure VM, Ubuntu 24.04"]
+    HF["Hugging Face model repo"] -->|"download at image build"| IMG["Docker image"]
+    VM --> IMG
+    IMG --> C["Container: uvicorn on port 7860"]
+    U["Browser"] -->|"HTTP port 80"| C
+```
+
+## Design decisions and trade-offs
+
+| Decision | Why | Trade-off |
+|---|---|---|
+| Extractive QA with a null answer, not a classifier | The same model finds the passage and decides presence, so every "found" comes with its evidence | Needs windowing and span decoding, and is slower than a classifier |
+| Threshold chosen on validation, applied once to test | Test numbers stay honest | The threshold is tuned to one data distribution |
+| One plain-text string plus a word table | Exact page and highlight mapping | A modest amount of bookkeeping per document |
+| Highlights rendered on the server | The browser needs no PDF library, and the highlight is the same everywhere | Each page view is an image request |
+| One worker thread and an in-memory job list | Simple, and one model instance is enough for one demo user | No parallel documents and no persistence across restarts |
+| Ask mode is opt-in per question | The user decides what leaves their machine | An extra click |
+| Model weights on Hugging Face, not in Git | A 436 MB file does not belong in a repo | The first Docker build needs internet access |
+| Legal-BERT as the main model | Domain pre-training on legal text | A bert-base baseline is kept for comparison, and it is close |
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Modelling | PyTorch, Hugging Face Transformers, Legal-BERT (`nlpaueb/legal-bert-base-uncased`), scikit-learn |
+| Retrieval | BM25 (own implementation), `BAAI/bge-small-en-v1.5` with sentence-transformers, FAISS |
+| Backend | FastAPI, Uvicorn, Pydantic, a worker thread with a queue |
+| Documents | PyMuPDF, Tesseract OCR, LibreOffice (headless) |
+| Frontend | One HTML file with vanilla JavaScript and CSS variables |
+| LLM (optional) | Groq's OpenAI-compatible API, `openai/gpt-oss-120b` |
+| Quality | pytest (144 tests) |
+| Delivery | Docker, Hugging Face Hub, Azure virtual machine |
+
+## Quick start (local)
+
+Tested with Python 3.13 on Windows. Tesseract and LibreOffice are optional: without them, scans and Word files fail with a clear error message.
 
 ```
-cd /d E:\Documind
-call .venv313\Scripts\activate.bat
+git clone https://github.com/rock917/Documind_AI.git
+cd Documind_AI
+python -m venv .venv
+.venv\Scripts\activate
+pip install torch
+pip install -r requirements.txt
+hf download TheRock45/documind-legalbert-qa --local-dir checkpoints/legalbert_qa/final
 python -m uvicorn documind.api.main:app --host 127.0.0.1 --port 8000
 ```
 
-Then open http://127.0.0.1:8000.
+On Linux or macOS, activate with `source .venv/bin/activate`. Open http://127.0.0.1:8000 and upload a contract. A GPU is used automatically if PyTorch can see one.
 
-- **Analyse a PDF from the command line:** `python -m documind.pipeline.analyze path\to\contract.pdf`
-- **Run the tests (144):** `python -m pytest -q`. If your C: drive is short of space, add `--basetemp=E:\Documind\.pytest_tmp`.
-- **Word files** need LibreOffice, and **scans** need Tesseract. Both are found automatically, or set `DOCUMIND_SOFFICE` and `DOCUMIND_TESSERACT` to their paths.
-- **Ask mode** needs a Groq API key. Put one line, `GROQ_API_KEY=your-key`, in a file named `.env` in the project folder (it is git-ignored), or set the variable in your environment. The model and limits are in `configs\general.json`. `python -m scripts.groq_models` lists the model names your key can use.
+**Ask mode** needs a free [Groq](https://console.groq.com) API key. Create a file named `.env` next to this README containing one line, `GROQ_API_KEY=your_key`. It is git-ignored. Without a key the rest of the app works normally.
+
+Try the finder from the command line without the web app:
+
+```
+python -m documind.pipeline.analyze path\to\contract.pdf --categories "Governing Law,Parties"
+```
+
+## Configuration
+
+**`configs/inference.json`**
+
+| Key | Meaning |
+|---|---|
+| `model_dir` | Local folder or Hugging Face repo id of the fine-tuned model |
+| `tokenizer` | Tokenizer name or path |
+| `questions_path` | JSON file with the 41 clause questions |
+| `threshold` | Abstention threshold on the present score (8.690, from validation) |
+| `top_k` | Passages returned per clause (3) |
+| `max_length`, `stride` | Window size and overlap in tokens (384, 128) |
+| `batch_size` | Windows per forward pass |
+
+**`configs/general.json`** (Ask mode): the Groq model and base URL, the embedding model, `top_k` (6), chunk size and stride (120 and 60 words), the request timeout and the maximum question length (500 characters).
+
+**Environment variables**
+
+| Variable | Purpose |
+|---|---|
+| `GROQ_API_KEY` | Enables Ask mode. Read from the environment or from a git-ignored `.env` file. An existing environment variable is never overridden by `.env`. |
+| `DOCUMIND_SOFFICE` | Path to `soffice`, if LibreOffice is not on the PATH |
+| `DOCUMIND_TESSERACT` | Path to `tesseract`, if it is not on the PATH |
+
+## Docker and deployment
+
+The Dockerfile installs Tesseract and LibreOffice, CPU-only PyTorch and the Python packages, and downloads the model from Hugging Face at build time.
+
+```
+docker build -t documind .
+docker run -p 80:7860 documind
+```
+
+Open http://localhost. For Ask mode, add `-e GROQ_API_KEY=your_key`. Never commit a key.
+
+The reference deployment is a 2-vCPU, 4 GB Azure VM with the container above. Analysis runs on CPU there, so it is slower than on a local GPU. Since the service has no login, the VM is only started for demos.
+
+## API
+
+| Method and path | Purpose |
+|---|---|
+| `POST /api/documents` | Upload a file (max 50 MB); returns a document id |
+| `GET /api/documents/{id}` | State, progress, page sizes, OCR flag |
+| `GET /api/documents/{id}/results` | Clause results with passages, pages and scores |
+| `GET /api/documents/{id}/page/{n}.png` | A page image; `?hl=` highlights a character range |
+| `GET /api/documents/{id}/report.pdf` | The readable PDF report |
+| `POST /api/documents/{id}/ask` | Ask mode question with citations |
+| `GET /api/general` | Whether Ask mode is available, and which model |
+| `GET /api/about` | The 41 clause types and the threshold |
+
+Interactive API docs are served by FastAPI at `/docs`.
+
+## Reproducing the training and evaluation
+
+The CUAD data is not included in this repository. Download it from the [Atticus Project](https://www.atticusprojectai.org/cuad) and see `configs/config.yaml` for the expected paths. Each step is a module with `--help`:
+
+```
+python -m documind.data.build_windows --split train
+python -m documind.data.build_windows --split val
+python -m documind.models.train_qa --name legalbert_qa --save
+```
+
+Evaluation modules live in `documind/eval/` (metrics, risk-coverage, hit-at-k, error analysis), and retrieval baselines in `documind/retrieval/`. Their outputs are the files in `reports/`. The training defaults are 2 epochs, learning rate 3e-5, batch size 8 with 4 gradient-accumulation steps. The exact run settings are recorded in `reports/train_legalbert_qa.json`.
+
+## Testing
+
+```
+python -m pytest -q
+```
+
+144 tests cover windowing, span decoding, metrics, retrieval, PDF handling, the API, the report and Ask mode. The Ask mode tests inject a fake chat function, so no network or key is needed. The whole suite takes about a minute on the author's machine. On Windows, `--basetemp=.pytest_tmp` keeps pytest's temporary files on the project drive.
 
 ## Project layout
 
-| Folder | Contents |
-| --- | --- |
-| `documind\pdf` | Text and word-box extraction, highlight rendering, Word conversion and OCR |
-| `documind\models`, `documind\eval` | Question-answering model, training, scoring, abstention and error analysis |
-| `documind\retrieval` | BM25, dense retrieval and fusion baselines |
-| `documind\pipeline` | The 41-clause analysis |
-| `documind\general` | Ask mode (retrieval and Groq) |
-| `documind\api`, `documind\web` | FastAPI backend and the single-page interface |
-| `documind\report.py`, `documind\envfile.py` | PDF report and `.env` loader |
-| `configs`, `scripts`, `tests`, `reports` | Settings, helper scripts, test suite, evaluation outputs |
+```
+documind/
+  api/        FastAPI app, job manager, startup (loads .env)
+  data/       CUAD-QA windowing (build_windows, window_stats)
+  models/     QA fine-tuning (train_qa)
+  eval/       Span decoding, metrics, risk-coverage, error analysis
+  retrieval/  BM25, chunking, retrieval evaluation
+  pipeline/   ClauseFinder: windows, model, threshold, evidence
+  pdf/        Text and word boxes, OCR, Office conversion
+  general/    Ask mode: hybrid retrieval and Groq client
+  web/        index.html (the whole UI)
+  report.py   PDF report builder
+configs/      Inference and Ask mode settings
+data/         Clause questions (the CUAD data itself is not included)
+reports/      Training logs, evaluation results, curves
+scripts/      Small utilities (OCR quality check, model list)
+tests/        144 automated tests
+Dockerfile    CPU image for deployment
+```
+
+## Security and privacy
+
+- **No login.** The service is meant for a single user or a short demo. Anyone who can reach a running instance can upload files and use it, so do not expose it permanently without adding authentication.
+- **Uploads** are stored under `storage/<random id>/` on the server and are not shared between documents. The folder is git-ignored.
+- **Ask mode** sends only the question and a few excerpts to Groq, and only after the user ticks consent for that question. The API key stays on the server and is never logged or sent to the browser.
+- **Secrets** live in the environment or a git-ignored `.env` file, never in the repository.
+- **Upload limit** of 50 MB per file.
 
 ## Limitations
 
-- **It misses about 1 in 5 present clauses** (80.9% found). "Not found" is a strong hint, not proof: check the document.
-- **Scores are raw model scores**, not calibrated probabilities. "Close call" means the margin over the threshold is under 3.
-- **Handwriting is not supported**, and OCR on scans can contain recognition errors. OCR processes at most 100 pages.
-- **English-language commercial contracts only.** The model is trained on CUAD, so unusual documents (job descriptions, lecture notes) will mostly return "not found".
-- **Ask mode highlights the whole retrieved chunk** (about 120 words), not just the sentence the answer used, and answers are written by an AI model: check the highlighted page. Groq's free tier has rate limits, and models there are retired from time to time.
-- **One document at a time.** The job list is kept in memory and is lost when the server restarts. Finished results stay in `storage\`.
-- **PyMuPDF is AGPL-licensed.** Check its terms before redistributing the project.
-- This is a research and portfolio project and **not legal advice**.
+- **Scores are not probabilities.** They are raw model scores, calibrated only through the threshold. A higher score means more confident, but it is not a percentage.
+- **Misses happen.** About 19% of present clauses are missed. A long, unusual or poorly scanned contract can score lower than the benchmark. Always read the evidence.
+- **English commercial contracts only.** Other languages and non-contract documents mostly return "not found". Handwriting is not supported.
+- **Ask mode highlights the whole retrieved chunk**, not the exact answer span, and depends on Groq's free-tier limits.
+- **One document at a time**, with an in-memory job list that resets when the server restarts.
+- **CPU is slow.** The model is fast on a GPU and noticeably slower on a small CPU server.
+- **Licensing.** PyMuPDF is AGPL-licensed, so a closed-source deployment would need a commercial licence or a different PDF library. CUAD is released under CC BY 4.0.
 
-## Data
+## Possible next steps
 
-The model is trained and tested on [CUAD](https://www.atticusprojectai.org/cuad), the Contract Understanding Atticus Dataset: 510 commercial contracts annotated with 41 clause types, released under CC BY 4.0. The data is not included in this repository.
+- A paired significance test between the two models.
+- Score calibration, so that a score can be read as a probability.
+- Faster CPU inference, for example with a quantised model, followed by re-checking the threshold.
+- Authentication and per-user storage for a permanent public deployment.
+- Persistent job history.
+
+## Acknowledgements
+
+- [CUAD](https://www.atticusprojectai.org/cuad), the Contract Understanding Atticus Dataset by The Atticus Project
+- [Legal-BERT](https://huggingface.co/nlpaueb/legal-bert-base-uncased) by Chalkidis et al.
+- [Hugging Face Transformers](https://github.com/huggingface/transformers), [FAISS](https://github.com/facebookresearch/faiss), [FastAPI](https://fastapi.tiangolo.com/), [PyMuPDF](https://pymupdf.readthedocs.io/), [Tesseract](https://github.com/tesseract-ocr/tesseract) and [LibreOffice](https://www.libreoffice.org/)
+
+Built by Bobby as a portfolio project.

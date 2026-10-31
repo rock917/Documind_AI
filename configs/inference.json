@@ -1,0 +1,11 @@
+{
+  "model_dir": "checkpoints/legalbert_qa/final",
+  "tokenizer": "nlpaueb/legal-bert-base-uncased",
+  "questions_path": "data/processed/questions.json",
+  "threshold": 8.690,
+  "threshold_source": "chosen on the validation split (51 contracts) for the Legal-BERT QA model; never tuned on test",
+  "top_k": 3,
+  "max_length": 384,
+  "stride": 128,
+  "batch_size": 16
+}

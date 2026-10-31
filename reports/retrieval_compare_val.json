@@ -1,0 +1,5390 @@
+{
+  "split": "val",
+  "model": "BAAI/bge-small-en-v1.5",
+  "query_prefix": "Represent this sentence for searching relevant passages: ",
+  "n_present": 722,
+  "mean_chunks_per_contract": 148.2941176470588,
+  "recall": {
+    "bm25": {
+      "@1": {
+        "point": 0.3476454293628809,
+        "lo": 0.31672892720306517,
+        "hi": 0.381160186859554
+      },
+      "@3": {
+        "point": 0.4930747922437673,
+        "lo": 0.454661558109834,
+        "hi": 0.5333333333333333
+      },
+      "@5": {
+        "point": 0.5761772853185596,
+        "lo": 0.5323229578027244,
+        "hi": 0.6154867463383952
+      },
+      "@10": {
+        "point": 0.685595567867036,
+        "lo": 0.6499287235010126,
+        "hi": 0.7236883395727813
+      },
+      "@20": {
+        "point": 0.8060941828254847,
+        "lo": 0.7692185514612453,
+        "hi": 0.8465417506350106
+      }
+    },
+    "dense": {
+      "@1": {
+        "point": 0.3518005540166205,
+        "lo": 0.3173397405933592,
+        "hi": 0.3883881631564916
+      },
+      "@3": {
+        "point": 0.48614958448753465,
+        "lo": 0.44953608562691133,
+        "hi": 0.5243848221343873
+      },
+      "@5": {
+        "point": 0.5443213296398892,
+        "lo": 0.5105311964603536,
+        "hi": 0.5828887937565712
+      },
+      "@10": {
+        "point": 0.6454293628808865,
+        "lo": 0.6139405945634099,
+        "hi": 0.6801547167539582
+      },
+      "@20": {
+        "point": 0.7409972299168975,
+        "lo": 0.7099986187845303,
+        "hi": 0.7753863176208451
+      }
+    },
+    "hybrid": {
+      "@1": {
+        "point": 0.40443213296398894,
+        "lo": 0.3671814819677871,
+        "hi": 0.444027680164351
+      },
+      "@3": {
+        "point": 0.5457063711911357,
+        "lo": 0.5093704852437191,
+        "hi": 0.5833425925925926
+      },
+      "@5": {
+        "point": 0.6052631578947368,
+        "lo": 0.5735507167205663,
+        "hi": 0.6427801836133725
+      },
+      "@10": {
+        "point": 0.7008310249307479,
+        "lo": 0.6692499034720366,
+        "hi": 0.735648597681308
+      },
+      "@20": {
+        "point": 0.8157894736842105,
+        "lo": 0.7811545255510772,
+        "hi": 0.8510316805660197
+      }
+    }
+  },
+  "random_recall": {
+    "@1": 0.0283457862512073,
+    "@3": 0.07966721512839106,
+    "@5": 0.12702892150957912,
+    "@10": 0.23081081731782505,
+    "@20": 0.3919514693959783
+  },
+  "mrr": {
+    "bm25": 0.4557977458262896,
+    "dense": 0.44845825691742364,
+    "hybrid": 0.5043956738374896
+  },
+  "paired_diff": {
+    "dense_minus_bm25@5": {
+      "point": -0.03185595567867036,
+      "lo": -0.06686324344219081,
+      "hi": 0.0015184350057550191
+    },
+    "dense_minus_bm25@10": {
+      "point": -0.04016620498614958,
+      "lo": -0.07280575028419857,
+      "hi": -0.00937996925921073
+    },
+    "hybrid_minus_bm25@5": {
+      "point": 0.029085872576177285,
+      "lo": -0.0016355513266399792,
+      "hi": 0.060274476228847705
+    },
+    "hybrid_minus_bm25@10": {
+      "point": 0.015235457063711912,
+      "lo": -0.010287580301217302,
+      "hi": 0.042368198841424946
+    },
+    "hybrid_minus_dense@5": {
+      "point": 0.060941828254847646,
+      "lo": 0.03556694664031621,
+      "hi": 0.08696819151773805
+    },
+    "hybrid_minus_dense@10": {
+      "point": 0.055401662049861494,
+      "lo": 0.032598847388386344,
+      "hi": 0.07806294358691347
+    }
+  },
+  "per_category_recall@5": {
+    "Agreement Date": {
+      "n_present": 45,
+      "bm25": 0.28888888888888886,
+      "dense": 0.08888888888888889,
+      "hybrid": 0.15555555555555556
+    },
+    "Anti-Assignment": {
+      "n_present": 40,
+      "bm25": 0.925,
+      "dense": 0.875,
+      "hybrid": 1.0
+    },
+    "Cap On Liability": {
+      "n_present": 25,
+      "bm25": 0.72,
+      "dense": 0.88,
+      "hybrid": 0.84
+    },
+    "Document Name": {
+      "n_present": 51,
+      "bm25": 0.37254901960784315,
+      "dense": 0.1568627450980392,
+      "hybrid": 0.19607843137254902
+    },
+    "Effective Date": {
+      "n_present": 40,
+      "bm25": 0.3,
+      "dense": 0.325,
+      "hybrid": 0.375
+    },
+    "Expiration Date": {
+      "n_present": 42,
+      "bm25": 0.7142857142857143,
+      "dense": 0.8571428571428571,
+      "hybrid": 0.8095238095238095
+    },
+    "Governing Law": {
+      "n_present": 48,
+      "bm25": 0.8125,
+      "dense": 0.7291666666666666,
+      "hybrid": 0.8541666666666666
+    },
+    "License Grant": {
+      "n_present": 21,
+      "bm25": 0.5714285714285714,
+      "dense": 0.42857142857142855,
+      "hybrid": 0.7619047619047619
+    },
+    "Non-Transferable License": {
+      "n_present": 18,
+      "bm25": 0.9444444444444444,
+      "dense": 0.6111111111111112,
+      "hybrid": 0.7777777777777778
+    },
+    "Parties": {
+      "n_present": 51,
+      "bm25": 0.0784313725490196,
+      "dense": 0.0784313725490196,
+      "hybrid": 0.09803921568627451
+    },
+    "Post-Termination Services": {
+      "n_present": 26,
+      "bm25": 0.5769230769230769,
+      "dense": 0.5769230769230769,
+      "hybrid": 0.6538461538461539
+    },
+    "Uncapped Liability": {
+      "n_present": 6,
+      "bm25": 1.0,
+      "dense": 1.0,
+      "hybrid": 1.0
+    },
+    "Warranty Duration": {
+      "n_present": 10,
+      "bm25": 0.6,
+      "dense": 0.6,
+      "hybrid": 0.7
+    },
+    "Audit Rights": {
+      "n_present": 22,
+      "bm25": 0.8636363636363636,
+      "dense": 0.7272727272727273,
+      "hybrid": 0.8636363636363636
+    },
+    "Competitive Restriction Exception": {
+      "n_present": 8,
+      "bm25": 0.0,
+      "dense": 0.125,
+      "hybrid": 0.125
+    },
+    "Covenant Not To Sue": {
+      "n_present": 13,
+      "bm25": 0.23076923076923078,
+      "dense": 0.15384615384615385,
+      "hybrid": 0.38461538461538464
+    },
+    "Exclusivity": {
+      "n_present": 19,
+      "bm25": 0.47368421052631576,
+      "dense": 0.3684210526315789,
+      "hybrid": 0.3684210526315789
+    },
+    "Insurance": {
+      "n_present": 21,
+      "bm25": 0.8095238095238095,
+      "dense": 0.9047619047619048,
+      "hybrid": 0.9523809523809523
+    },
+    "No-Solicit Of Customers": {
+      "n_present": 5,
+      "bm25": 0.4,
+      "dense": 0.4,
+      "hybrid": 0.4
+    },
+    "No-Solicit Of Employees": {
+      "n_present": 14,
+      "bm25": 0.7857142857142857,
+      "dense": 0.8571428571428571,
+      "hybrid": 0.8571428571428571
+    },
+    "Non-Compete": {
+      "n_present": 13,
+      "bm25": 0.23076923076923078,
+      "dense": 0.38461538461538464,
+      "hybrid": 0.46153846153846156
+    },
+    "Renewal Term": {
+      "n_present": 22,
+      "bm25": 0.8181818181818182,
+      "dense": 1.0,
+      "hybrid": 0.9545454545454546
+    },
+    "Rofr/Rofo/Rofn": {
+      "n_present": 13,
+      "bm25": 0.8461538461538461,
+      "dense": 0.46153846153846156,
+      "hybrid": 0.7692307692307693
+    },
+    "Minimum Commitment": {
+      "n_present": 14,
+      "bm25": 0.5,
+      "dense": 0.6428571428571429,
+      "hybrid": 0.7142857142857143
+    },
+    "Revenue/Profit Sharing": {
+      "n_present": 17,
+      "bm25": 0.23529411764705882,
+      "dense": 0.47058823529411764,
+      "hybrid": 0.35294117647058826
+    },
+    "Ip Ownership Assignment": {
+      "n_present": 16,
+      "bm25": 0.5,
+      "dense": 0.4375,
+      "hybrid": 0.4375
+    },
+    "Termination For Convenience": {
+      "n_present": 20,
+      "bm25": 0.85,
+      "dense": 0.8,
+      "hybrid": 0.95
+    },
+    "Affiliate License-Licensee": {
+      "n_present": 9,
+      "bm25": 0.6666666666666666,
+      "dense": 0.6666666666666666,
+      "hybrid": 0.6666666666666666
+    },
+    "Irrevocable Or Perpetual License": {
+      "n_present": 7,
+      "bm25": 1.0,
+      "dense": 1.0,
+      "hybrid": 1.0
+    },
+    "Liquidated Damages": {
+      "n_present": 6,
+      "bm25": 0.3333333333333333,
+      "dense": 0.5,
+      "hybrid": 0.3333333333333333
+    },
+    "Volume Restriction": {
+      "n_present": 6,
+      "bm25": 0.16666666666666666,
+      "dense": 0.16666666666666666,
+      "hybrid": 0.16666666666666666
+    },
+    "Notice Period To Terminate Renewal": {
+      "n_present": 16,
+      "bm25": 0.8125,
+      "dense": 1.0,
+      "hybrid": 0.875
+    },
+    "Change Of Control": {
+      "n_present": 17,
+      "bm25": 0.8823529411764706,
+      "dense": 0.8235294117647058,
+      "hybrid": 0.8823529411764706
+    }
+  },
+  "examples": [
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 32,
+      "rank_dense": 151,
+      "rank_hybrid": 71
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 92,
+      "rank_hybrid": 14
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 19,
+      "rank_dense": 73,
+      "rank_hybrid": 34
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 22,
+      "rank_dense": 6,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 44,
+      "rank_dense": 129,
+      "rank_hybrid": 75
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Uncapped Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 71,
+      "rank_dense": 127,
+      "rank_hybrid": 99
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 35,
+      "rank_dense": 16,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 6,
+      "rank_dense": 27,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 48,
+      "rank_dense": 10,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 6,
+      "rank_dense": 25,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 10,
+      "rank_dense": 5,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 6,
+      "rank_dense": 6,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 13,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "No-Solicit Of Customers",
+      "rank_bm25": 1,
+      "rank_dense": 11,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 71,
+      "rank_dense": 10,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 7,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 31,
+      "rank_dense": 6,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 157,
+      "rank_dense": 298,
+      "rank_hybrid": 227
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 25,
+      "rank_dense": 326,
+      "rank_hybrid": 75
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 32,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 6,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 43,
+      "rank_dense": 70,
+      "rank_hybrid": 42
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 7,
+      "rank_dense": 9,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 14,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 5,
+      "rank_dense": 37,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 8,
+      "rank_dense": 18,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 6,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Document Name",
+      "rank_bm25": 2,
+      "rank_dense": 65,
+      "rank_hybrid": 14
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 4,
+      "rank_dense": 34,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 15,
+      "rank_dense": 23,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Insurance",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 6,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Joint Ip Ownership",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "License Grant",
+      "rank_bm25": 14,
+      "rank_dense": 10,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Parties",
+      "rank_bm25": 27,
+      "rank_dense": 73,
+      "rank_hybrid": 40
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 25,
+      "rank_dense": 16,
+      "rank_hybrid": 21
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 3,
+      "rank_dense": 11,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Agreement Date",
+      "rank_bm25": 8,
+      "rank_dense": 12,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Document Name",
+      "rank_bm25": 3,
+      "rank_dense": 32,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Effective Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Governing Law",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2",
+      "category": "Parties",
+      "rank_bm25": 13,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Affiliate License-Licensor",
+      "rank_bm25": 2,
+      "rank_dense": 18,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 88,
+      "rank_dense": 182,
+      "rank_hybrid": 131
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 15,
+      "rank_dense": 2,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 38,
+      "rank_dense": 178,
+      "rank_hybrid": 65
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 51,
+      "rank_dense": 142,
+      "rank_hybrid": 83
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 9,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 25,
+      "rank_dense": 46,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 5,
+      "rank_dense": 5,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Liquidated Damages",
+      "rank_bm25": 236,
+      "rank_dense": 41,
+      "rank_hybrid": 88
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Most Favored Nation",
+      "rank_bm25": 29,
+      "rank_dense": 143,
+      "rank_hybrid": 48
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 16,
+      "rank_dense": 36,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 5,
+      "rank_dense": 81,
+      "rank_hybrid": 29
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 154,
+      "rank_dense": 286,
+      "rank_hybrid": 243
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 5,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 16,
+      "rank_dense": 3,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 30,
+      "rank_dense": 132,
+      "rank_hybrid": 46
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 23,
+      "rank_dense": 70,
+      "rank_hybrid": 38
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Third Party Beneficiary",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Uncapped Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT",
+      "category": "Volume Restriction",
+      "rank_bm25": 156,
+      "rank_dense": 14,
+      "rank_hybrid": 50
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 17,
+      "rank_dense": 40,
+      "rank_hybrid": 24
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 115,
+      "rank_dense": 36,
+      "rank_hybrid": 54
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 19,
+      "rank_dense": 2,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 7,
+      "rank_dense": 28,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 12,
+      "rank_dense": 31,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 6,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 21,
+      "rank_dense": 3,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 58,
+      "rank_dense": 1,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 10,
+      "rank_dense": 24,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 33,
+      "rank_dense": 9,
+      "rank_hybrid": 24
+    },
+    {
+      "title": "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 3,
+      "rank_dense": 6,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 173,
+      "rank_dense": 278,
+      "rank_hybrid": 223
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 5,
+      "rank_dense": 4,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 20,
+      "rank_dense": 291,
+      "rank_hybrid": 63
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 117,
+      "rank_dense": 305,
+      "rank_hybrid": 182
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 26,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 25,
+      "rank_dense": 165,
+      "rank_hybrid": 47
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 40,
+      "rank_dense": 6,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 8,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 5,
+      "rank_dense": 10,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 13,
+      "rank_dense": 45,
+      "rank_hybrid": 29
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 15,
+      "rank_dense": 1,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 3,
+      "rank_dense": 3,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 8,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 10,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 9,
+      "rank_dense": 55,
+      "rank_hybrid": 27
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 11,
+      "rank_dense": 11,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Document Name",
+      "rank_bm25": 12,
+      "rank_dense": 25,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 4,
+      "rank_dense": 6,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Parties",
+      "rank_bm25": 23,
+      "rank_dense": 21,
+      "rank_hybrid": 26
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 9,
+      "rank_dense": 81,
+      "rank_hybrid": 30
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 36,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 17,
+      "rank_dense": 102,
+      "rank_hybrid": 39
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Joint Ip Ownership",
+      "rank_bm25": 3,
+      "rank_dense": 7,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 6,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 40,
+      "rank_dense": 100,
+      "rank_hybrid": 64
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 2,
+      "rank_dense": 5,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 11,
+      "rank_dense": 5,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Source Code Escrow",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Uncapped Liability",
+      "rank_bm25": 2,
+      "rank_dense": 5,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Unlimited/All-You-Can-Eat-License",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 26,
+      "rank_dense": 6,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 10,
+      "rank_dense": 8,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 61,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 9,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 29,
+      "rank_dense": 23,
+      "rank_hybrid": 37
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "License Grant",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Most Favored Nation",
+      "rank_bm25": 2,
+      "rank_dense": 8,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Parties",
+      "rank_bm25": 12,
+      "rank_dense": 29,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 35,
+      "rank_dense": 53,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 2,
+      "rank_dense": 16,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Change Of Control",
+      "rank_bm25": 4,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 7,
+      "rank_dense": 19,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Document Name",
+      "rank_bm25": 19,
+      "rank_dense": 20,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 5,
+      "rank_dense": 61,
+      "rank_hybrid": 24
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 39,
+      "rank_dense": 20,
+      "rank_hybrid": 33
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 26,
+      "rank_dense": 2,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 28,
+      "rank_dense": 59,
+      "rank_hybrid": 21
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 38,
+      "rank_dense": 48,
+      "rank_hybrid": 55
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Joint Ip Ownership",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Minimum Commitment",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Non-Compete",
+      "rank_bm25": 108,
+      "rank_dense": 18,
+      "rank_hybrid": 49
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 4,
+      "rank_dense": 16,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Parties",
+      "rank_bm25": 107,
+      "rank_dense": 326,
+      "rank_hybrid": 194
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 8,
+      "rank_dense": 12,
+      "rank_hybrid": 23
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Renewal Term",
+      "rank_bm25": 26,
+      "rank_dense": 1,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 280,
+      "rank_dense": 19,
+      "rank_hybrid": 53
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement",
+      "category": "Uncapped Liability",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 3,
+      "rank_dense": 12,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 4,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 3,
+      "rank_dense": 5,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 1,
+      "rank_dense": 41,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 6,
+      "rank_dense": 4,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 10,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 3,
+      "rank_dense": 5,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 17,
+      "rank_dense": 58,
+      "rank_hybrid": 37
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 2,
+      "rank_dense": 7,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Affiliate License-Licensor",
+      "rank_bm25": 5,
+      "rank_dense": 28,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 29,
+      "rank_dense": 39,
+      "rank_hybrid": 31
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 97,
+      "rank_dense": 52,
+      "rank_hybrid": 73
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 10,
+      "rank_dense": 53,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 25,
+      "rank_dense": 40,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 20,
+      "rank_dense": 6,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 4,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 4,
+      "rank_dense": 28,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 8,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 200,
+      "rank_dense": 6,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Customers",
+      "rank_bm25": 56,
+      "rank_dense": 26,
+      "rank_hybrid": 29
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 6,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 23,
+      "rank_dense": 13,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 82,
+      "rank_dense": 144,
+      "rank_hybrid": 118
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 204,
+      "rank_dense": 3,
+      "rank_hybrid": 30
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 4,
+      "rank_dense": 10,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Source Code Escrow",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Uncapped Liability",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 9,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 17,
+      "rank_dense": 73,
+      "rank_hybrid": 40
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 15,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 7,
+      "rank_dense": 64,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 12,
+      "rank_dense": 65,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 6,
+      "rank_dense": 17,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Most Favored Nation",
+      "rank_bm25": 94,
+      "rank_dense": 7,
+      "rank_hybrid": 31
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 7,
+      "rank_dense": 17,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 2,
+      "rank_dense": 37,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 38,
+      "rank_dense": 63,
+      "rank_hybrid": 54
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 6,
+      "rank_dense": 7,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 5,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT",
+      "category": "Document Name",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT",
+      "category": "Effective Date",
+      "rank_bm25": 7,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT",
+      "category": "Governing Law",
+      "rank_bm25": 8,
+      "rank_dense": 1,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT",
+      "category": "Parties",
+      "rank_bm25": 7,
+      "rank_dense": 8,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 19,
+      "rank_dense": 8,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 4,
+      "rank_dense": 10,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 14,
+      "rank_dense": 1,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 7,
+      "rank_dense": 11,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 15,
+      "rank_dense": 15,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Volume Restriction",
+      "rank_bm25": 5,
+      "rank_dense": 9,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 17,
+      "rank_dense": 18,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 44,
+      "rank_dense": 21,
+      "rank_hybrid": 33
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 7,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 27,
+      "rank_dense": 15,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 17,
+      "rank_dense": 44,
+      "rank_hybrid": 26
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 18,
+      "rank_dense": 26,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 8,
+      "rank_dense": 39,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Liquidated Damages",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 11,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 21,
+      "rank_dense": 57,
+      "rank_hybrid": 37
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 1,
+      "rank_dense": 23,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 7,
+      "rank_dense": 156,
+      "rank_hybrid": 34
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Change Of Control",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 45,
+      "rank_dense": 64,
+      "rank_hybrid": 49
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Document Name",
+      "rank_bm25": 29,
+      "rank_dense": 15,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 17,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 10,
+      "rank_dense": 1,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 4,
+      "rank_dense": 14,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Non-Compete",
+      "rank_bm25": 34,
+      "rank_dense": 45,
+      "rank_hybrid": 34
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 2,
+      "rank_dense": 8,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Parties",
+      "rank_bm25": 153,
+      "rank_dense": 206,
+      "rank_hybrid": 211
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 35,
+      "rank_dense": 32,
+      "rank_hybrid": 27
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 3,
+      "rank_dense": 7,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement",
+      "category": "Uncapped Liability",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 17,
+      "rank_dense": 23,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 27,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 8,
+      "rank_dense": 23,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 6,
+      "rank_dense": 5,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "No-Solicit Of Customers",
+      "rank_bm25": 50,
+      "rank_dense": 5,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 14,
+      "rank_dense": 28,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Agreement Date",
+      "rank_bm25": 13,
+      "rank_dense": 70,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Anti-Assignment",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Cap On Liability",
+      "rank_bm25": 4,
+      "rank_dense": 3,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 12,
+      "rank_dense": 6,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Document Name",
+      "rank_bm25": 18,
+      "rank_dense": 31,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Effective Date",
+      "rank_bm25": 4,
+      "rank_dense": 44,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Exclusivity",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "License Grant",
+      "rank_bm25": 9,
+      "rank_dense": 8,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Liquidated Damages",
+      "rank_bm25": 11,
+      "rank_dense": 17,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Minimum Commitment",
+      "rank_bm25": 28,
+      "rank_dense": 18,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Non-Disparagement",
+      "rank_bm25": 27,
+      "rank_dense": 48,
+      "rank_hybrid": 52
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Parties",
+      "rank_bm25": 59,
+      "rank_dense": 8,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 16,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 7,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1",
+      "category": "Volume Restriction",
+      "rank_bm25": 201,
+      "rank_dense": 85,
+      "rank_hybrid": 147
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 40,
+      "rank_dense": 3,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 3,
+      "rank_dense": 26,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 11,
+      "rank_dense": 14,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Document Name",
+      "rank_bm25": 8,
+      "rank_dense": 34,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 1,
+      "rank_dense": 17,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 49,
+      "rank_dense": 87,
+      "rank_hybrid": 71
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 40,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "License Grant",
+      "rank_bm25": 11,
+      "rank_dense": 13,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Minimum Commitment",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Parties",
+      "rank_bm25": 12,
+      "rank_dense": 32,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 7,
+      "rank_dense": 5,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Price Restrictions",
+      "rank_bm25": 3,
+      "rank_dense": 19,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Renewal Term",
+      "rank_bm25": 6,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Document Name",
+      "rank_bm25": 26,
+      "rank_dense": 14,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 66,
+      "rank_dense": 4,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Parties",
+      "rank_bm25": 12,
+      "rank_dense": 9,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Source Code Escrow",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 107,
+      "rank_dense": 102,
+      "rank_hybrid": 119
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 32,
+      "rank_dense": 87,
+      "rank_hybrid": 48
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 29,
+      "rank_dense": 41,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 35,
+      "rank_dense": 24,
+      "rank_hybrid": 26
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 23,
+      "rank_dense": 86,
+      "rank_hybrid": 41
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 85,
+      "rank_dense": 16,
+      "rank_hybrid": 30
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 44,
+      "rank_dense": 25,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Non-Disparagement",
+      "rank_bm25": 149,
+      "rank_dense": 139,
+      "rank_hybrid": 189
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 8,
+      "rank_dense": 16,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 94,
+      "rank_dense": 133,
+      "rank_hybrid": 142
+    },
+    {
+      "title": "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 17,
+      "rank_dense": 32,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 30,
+      "rank_dense": 28,
+      "rank_hybrid": 23
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 20,
+      "rank_dense": 47,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 17,
+      "rank_dense": 103,
+      "rank_hybrid": 39
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 16,
+      "rank_dense": 3,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 61,
+      "rank_dense": 63,
+      "rank_hybrid": 66
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 14,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Document Name",
+      "rank_bm25": 23,
+      "rank_dense": 58,
+      "rank_hybrid": 38
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 5,
+      "rank_dense": 20,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Minimum Commitment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Non-Compete",
+      "rank_bm25": 3,
+      "rank_dense": 4,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 59,
+      "rank_dense": 4,
+      "rank_hybrid": 23
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Parties",
+      "rank_bm25": 49,
+      "rank_dense": 40,
+      "rank_hybrid": 53
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 33,
+      "rank_dense": 13,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Renewal Term",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement",
+      "category": "Warranty Duration",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 5,
+      "rank_dense": 39,
+      "rank_hybrid": 14
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 8,
+      "rank_dense": 8,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 3,
+      "rank_dense": 8,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 17,
+      "rank_dense": 64,
+      "rank_hybrid": 34
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 32,
+      "rank_dense": 2,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 42,
+      "rank_dense": 12,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 9,
+      "rank_dense": 42,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Customers",
+      "rank_bm25": 10,
+      "rank_dense": 39,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 69,
+      "rank_dense": 8,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Disparagement",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 44,
+      "rank_dense": 54,
+      "rank_hybrid": 48
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 34,
+      "rank_dense": 21,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 97,
+      "rank_dense": 31,
+      "rank_hybrid": 50
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 9,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 24,
+      "rank_dense": 111,
+      "rank_hybrid": 41
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 2,
+      "rank_dense": 5,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 61,
+      "rank_dense": 16,
+      "rank_hybrid": 23
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 16,
+      "rank_dense": 131,
+      "rank_hybrid": 44
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 25,
+      "rank_dense": 28,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 4,
+      "rank_dense": 27,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 16,
+      "rank_dense": 3,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 13,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 3,
+      "rank_dense": 6,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 23,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 244,
+      "rank_dense": 134,
+      "rank_hybrid": 206
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 2,
+      "rank_dense": 57,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 76,
+      "rank_dense": 23,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 6,
+      "rank_dense": 7,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 22,
+      "rank_dense": 1,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 207,
+      "rank_dense": 39,
+      "rank_hybrid": 96
+    },
+    {
+      "title": "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 15,
+      "rank_dense": 19,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 33,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 4,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 18,
+      "rank_dense": 28,
+      "rank_hybrid": 26
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 17,
+      "rank_dense": 2,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 3,
+      "rank_dense": 32,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 13,
+      "rank_dense": 19,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 3,
+      "rank_dense": 22,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 2,
+      "rank_dense": 20,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 14,
+      "rank_dense": 25,
+      "rank_hybrid": 23
+    },
+    {
+      "title": "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT",
+      "category": "Volume Restriction",
+      "rank_bm25": 7,
+      "rank_dense": 14,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 4,
+      "rank_dense": 24,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 9,
+      "rank_dense": 10,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 20,
+      "rank_dense": 14,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 18,
+      "rank_dense": 68,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 33,
+      "rank_dense": 12,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 3,
+      "rank_dense": 26,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 12,
+      "rank_dense": 39,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 10,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Liquidated Damages",
+      "rank_bm25": 7,
+      "rank_dense": 5,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 41,
+      "rank_dense": 53,
+      "rank_hybrid": 51
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 5,
+      "rank_dense": 3,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 107,
+      "rank_dense": 83,
+      "rank_hybrid": 113
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 22,
+      "rank_dense": 31,
+      "rank_hybrid": 24
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 17,
+      "rank_dense": 26,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 8,
+      "rank_dense": 7,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 15,
+      "rank_dense": 15,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 13,
+      "rank_dense": 16,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 31,
+      "rank_dense": 42,
+      "rank_hybrid": 41
+    },
+    {
+      "title": "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Agreement Date",
+      "rank_bm25": 16,
+      "rank_dense": 12,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Anti-Assignment",
+      "rank_bm25": 9,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Change Of Control",
+      "rank_bm25": 1,
+      "rank_dense": 10,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 23,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Exclusivity",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Parties",
+      "rank_bm25": 3,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Renewal Term",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 112,
+      "rank_dense": 88,
+      "rank_hybrid": 106
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 3,
+      "rank_dense": 68,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 84,
+      "rank_dense": 7,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 25,
+      "rank_dense": 119,
+      "rank_hybrid": 38
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 128,
+      "rank_dense": 24,
+      "rank_hybrid": 44
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 8,
+      "rank_dense": 4,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 8,
+      "rank_dense": 36,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 11,
+      "rank_dense": 8,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 9,
+      "rank_dense": 6,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Most Favored Nation",
+      "rank_bm25": 37,
+      "rank_dense": 82,
+      "rank_hybrid": 76
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 101,
+      "rank_dense": 75,
+      "rank_hybrid": 97
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 38,
+      "rank_dense": 13,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 92,
+      "rank_dense": 81,
+      "rank_hybrid": 95
+    },
+    {
+      "title": "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 12,
+      "rank_dense": 5,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 6,
+      "rank_dense": 10,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 8,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Change Of Control",
+      "rank_bm25": 16,
+      "rank_dense": 3,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Document Name",
+      "rank_bm25": 15,
+      "rank_dense": 26,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 6,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "License Grant",
+      "rank_bm25": 5,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Parties",
+      "rank_bm25": 71,
+      "rank_dense": 140,
+      "rank_hybrid": 117
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 31,
+      "rank_dense": 18,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 45,
+      "rank_dense": 26,
+      "rank_hybrid": 29
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Change Of Control",
+      "rank_bm25": 17,
+      "rank_dense": 18,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 42,
+      "rank_dense": 11,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 34,
+      "rank_dense": 50,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 11,
+      "rank_dense": 32,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 9,
+      "rank_dense": 7,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 8,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Liquidated Damages",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 26,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 91,
+      "rank_dense": 82,
+      "rank_hybrid": 97
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 6,
+      "rank_dense": 11,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 13,
+      "rank_dense": 27,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 11,
+      "rank_dense": 18,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 20,
+      "rank_dense": 13,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 10,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 13,
+      "rank_dense": 6,
+      "rank_hybrid": 7
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 35,
+      "rank_dense": 76,
+      "rank_hybrid": 64
+    },
+    {
+      "title": "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT",
+      "category": "Volume Restriction",
+      "rank_bm25": 6,
+      "rank_dense": 39,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 1,
+      "rank_dense": 11,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 3,
+      "rank_dense": 13,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 22,
+      "rank_dense": 28,
+      "rank_hybrid": 29
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 4,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 1,
+      "rank_dense": 9,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT",
+      "category": "Volume Restriction",
+      "rank_bm25": 12,
+      "rank_dense": 4,
+      "rank_hybrid": 5
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Affiliate License-Licensee",
+      "rank_bm25": 3,
+      "rank_dense": 8,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Affiliate License-Licensor",
+      "rank_bm25": 5,
+      "rank_dense": 4,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Agreement Date",
+      "rank_bm25": 101,
+      "rank_dense": 104,
+      "rank_hybrid": 108
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Anti-Assignment",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Cap On Liability",
+      "rank_bm25": 16,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 100,
+      "rank_dense": 55,
+      "rank_hybrid": 87
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Document Name",
+      "rank_bm25": 15,
+      "rank_dense": 84,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Expiration Date",
+      "rank_bm25": 102,
+      "rank_dense": 47,
+      "rank_hybrid": 75
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 6,
+      "rank_dense": 1,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Irrevocable Or Perpetual License",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "License Grant",
+      "rank_bm25": 3,
+      "rank_dense": 9,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Non-Transferable License",
+      "rank_bm25": 9,
+      "rank_dense": 107,
+      "rank_hybrid": 33
+    },
+    {
+      "title": "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1",
+      "category": "Parties",
+      "rank_bm25": 66,
+      "rank_dense": 127,
+      "rank_hybrid": 100
+    },
+    {
+      "title": "QBIOMEDINC_04_08_2020-EX-99.1-JOINT FILING AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "QBIOMEDINC_04_08_2020-EX-99.1-JOINT FILING AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "QBIOMEDINC_04_08_2020-EX-99.1-JOINT FILING AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 6,
+      "rank_dense": 20,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 5,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 6,
+      "rank_dense": 16,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 8,
+      "rank_dense": 9,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 24,
+      "rank_dense": 32,
+      "rank_hybrid": 33
+    },
+    {
+      "title": "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 4,
+      "rank_dense": 5,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 2,
+      "rank_dense": 2,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 4,
+      "rank_dense": 45,
+      "rank_hybrid": 14
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 7,
+      "rank_dense": 58,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 1,
+      "rank_dense": 36,
+      "rank_hybrid": 10
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 8,
+      "rank_dense": 54,
+      "rank_hybrid": 18
+    },
+    {
+      "title": "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 42,
+      "rank_dense": 50,
+      "rank_hybrid": 51
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Audit Rights",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Covenant Not To Sue",
+      "rank_bm25": 5,
+      "rank_dense": 7,
+      "rank_hybrid": 4
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Document Name",
+      "rank_bm25": 21,
+      "rank_dense": 38,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Exclusivity",
+      "rank_bm25": 4,
+      "rank_dense": 34,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 7,
+      "rank_dense": 27,
+      "rank_hybrid": 9
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Insurance",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "License Grant",
+      "rank_bm25": 4,
+      "rank_dense": 11,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Non-Disparagement",
+      "rank_bm25": 12,
+      "rank_dense": 15,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Parties",
+      "rank_bm25": 41,
+      "rank_dense": 81,
+      "rank_hybrid": 65
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 4,
+      "rank_dense": 5,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement",
+      "category": "Revenue/Profit Sharing",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 3,
+      "rank_dense": 34,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 24,
+      "rank_dense": 9,
+      "rank_hybrid": 17
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 32,
+      "rank_dense": 43,
+      "rank_hybrid": 38
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 3,
+      "rank_dense": 43,
+      "rank_hybrid": 15
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 23,
+      "rank_dense": 4,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Liquidated Damages",
+      "rank_bm25": 81,
+      "rank_dense": 22,
+      "rank_hybrid": 46
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Minimum Commitment",
+      "rank_bm25": 58,
+      "rank_dense": 90,
+      "rank_hybrid": 80
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 18,
+      "rank_dense": 70,
+      "rank_hybrid": 35
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Post-Termination Services",
+      "rank_bm25": 18,
+      "rank_dense": 44,
+      "rank_hybrid": 22
+    },
+    {
+      "title": "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT",
+      "category": "Rofr/Rofo/Rofn",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 11,
+      "rank_dense": 5,
+      "rank_hybrid": 6
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 7,
+      "rank_dense": 2,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 12,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 2,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 19,
+      "rank_dense": 29,
+      "rank_hybrid": 24
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 29,
+      "rank_dense": 14,
+      "rank_hybrid": 21
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Cap On Liability",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 13,
+      "rank_dense": 27,
+      "rank_hybrid": 19
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Exclusivity",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 3,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Notice Period To Terminate Renewal",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 11,
+      "rank_dense": 13,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Price Restrictions",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Renewal Term",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT",
+      "category": "Warranty Duration",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Agreement Date",
+      "rank_bm25": 52,
+      "rank_dense": 7,
+      "rank_hybrid": 20
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Competitive Restriction Exception",
+      "rank_bm25": 92,
+      "rank_dense": 39,
+      "rank_hybrid": 49
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Document Name",
+      "rank_bm25": 12,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Effective Date",
+      "rank_bm25": 7,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Expiration Date",
+      "rank_bm25": 101,
+      "rank_dense": 2,
+      "rank_hybrid": 25
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Governing Law",
+      "rank_bm25": 17,
+      "rank_dense": 13,
+      "rank_hybrid": 8
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Insurance",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Ip Ownership Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "No-Solicit Of Customers",
+      "rank_bm25": 2,
+      "rank_dense": 4,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "No-Solicit Of Employees",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Non-Compete",
+      "rank_bm25": 10,
+      "rank_dense": 2,
+      "rank_hybrid": 3
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Parties",
+      "rank_bm25": 45,
+      "rank_dense": 16,
+      "rank_hybrid": 16
+    },
+    {
+      "title": "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT",
+      "category": "Termination For Convenience",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Agreement Date",
+      "rank_bm25": 5,
+      "rank_dense": 25,
+      "rank_hybrid": 13
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Anti-Assignment",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Cap On Liability",
+      "rank_bm25": 4,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Document Name",
+      "rank_bm25": 5,
+      "rank_dense": 32,
+      "rank_hybrid": 12
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Effective Date",
+      "rank_bm25": 3,
+      "rank_dense": 34,
+      "rank_hybrid": 11
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Expiration Date",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Governing Law",
+      "rank_bm25": 1,
+      "rank_dense": 1,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "License Grant",
+      "rank_bm25": 1,
+      "rank_dense": 7,
+      "rank_hybrid": 1
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Non-Transferable License",
+      "rank_bm25": 1,
+      "rank_dense": 6,
+      "rank_hybrid": 2
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Parties",
+      "rank_bm25": 13,
+      "rank_dense": 39,
+      "rank_hybrid": 31
+    },
+    {
+      "title": "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement",
+      "category": "Post-Termination Services",
+      "rank_bm25": 2,
+      "rank_dense": 3,
+      "rank_hybrid": 3
+    }
+  ]
+}

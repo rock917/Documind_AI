@@ -18,3 +18,6 @@ __pycache__/
 # Frontend (later)
 frontend/node_modules/
 frontend/dist/
+# Test scratch and one-time patch scripts
+.pytest_tmp/
+scripts/apply_*_patch.py

@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocuMind AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='2' width='18' height='20' rx='3' fill='%233556d6'/%3E%3Cpath d='M7 8h10M7 16h6' stroke='white' stroke-width='1.8' stroke-linecap='round'/%3E%3Crect x='6' y='10.4' width='12' height='3.2' rx='1' fill='%23ffd84d'/%3E%3C/svg%3E">
+<script>
+try { var t = localStorage.getItem("documind-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<style>
+:root {
+  --bg: #eceff3; --panel: #ffffff; --ink: #17202b; --muted: #5d6877; --line: #d6dce4;
+  --blue: #26407a; --blue-soft: #dfe6f5; --mark: #ffd84d; --mark-soft: #fff3bf;
+  --slate: #8a94a3; --alert: #9c2b2b; --alert-soft: #fbe9e9;
+  --sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11161d; --panel: #181e27; --ink: #e7ebf1; --muted: #9aa5b4; --line: #2a3340;
+    --blue: #8fb0ff; --blue-soft: #1f2c4a; --mark: #f2c94c; --mark-soft: #3a3214;
+    --slate: #6d7787; --alert: #ff9b9b; --alert-soft: #3a1d1d;
+  }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 20px; height: 52px;
+  background: var(--panel); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 650; letter-spacing: 0.01em; font-size: 16px; }
+.top-actions { display: flex; gap: 8px; }
+.btn { border: 1px solid var(--line); background: var(--panel); padding: 6px 12px; border-radius: 4px; }
+.btn:hover { border-color: var(--blue); }
+.btn.primary { background: var(--blue); color: var(--panel); border-color: var(--blue); }
+.btn:disabled { opacity: 0.45; cursor: default; }
+
+/* front page */
+.upload { position: relative; isolation: isolate; max-width: 880px; margin: 0 auto; padding: 64px 24px 56px; text-align: center; }
+.upload::before { content: ""; position: absolute; z-index: -1; left: 50%; top: -20px; width: min(980px, 100%); height: 440px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--blue-soft), transparent); opacity: 0.9; pointer-events: none; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; margin-bottom: 22px; }
+.eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+.upload h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(34px, 5.6vw, 58px); line-height: 1.1; letter-spacing: -0.015em; margin: 0 auto 18px; max-width: 15em; }
+.upload h1 .hl { background: linear-gradient(transparent 62%, var(--mark) 62%, var(--mark) 92%, transparent 92%); padding: 0 4px; border-radius: 2px; }
+.upload p { color: var(--muted); margin: 0 auto; }
+.upload .lead { font-size: 17px; max-width: 36em; margin-bottom: 30px; }
+.upload .fine { font-size: 13px; max-width: 44em; margin-top: 26px; }
+.sheet { position: relative; display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 470px; margin: 0 auto 16px;
+  padding: 16px 22px; text-align: left; color: var(--blue); background: var(--panel); border: 2px dashed var(--line); border-radius: 14px; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s; }
+.sheet span { display: flex; flex-direction: column; color: var(--ink); }
+.sheet small { color: var(--muted); font-size: 13px; }
+.sheet:hover { border-color: var(--blue); background: var(--blue-soft); transform: translateY(-2px); }
+.sheet.drag, .sheet:focus-visible { border-color: var(--blue); background: var(--blue-soft); outline: 2px solid var(--blue); outline-offset: 3px; }
+.sheet input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload .error { margin: 0 auto 20px; text-align: left; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 40px; text-align: left; }
+.feat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow); }
+.feat b { display: block; font-weight: 650; margin-bottom: 4px; }
+.feat span { color: var(--muted); font-size: 14px; }
+.eyebrow, .upload h1, .upload .lead, .sheet, .actions, .feats, .upload .fine { animation: rise 0.5s ease both; }
+.upload h1 { animation-delay: 0.05s; } .upload .lead { animation-delay: 0.1s; } .sheet { animation-delay: 0.15s; } .actions { animation-delay: 0.2s; } .feats { animation-delay: 0.28s; } .upload .fine { animation-delay: 0.36s; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .eyebrow, .upload h1, .upload .lead, .sheet, .actions, .feats, .upload .fine { animation: none; } .sheet { transition: none; } }
+@media (max-width: 760px) { .feats { grid-template-columns: 1fr; } }
+.error { background: var(--alert-soft); color: var(--alert); border: 1px solid var(--alert); padding: 10px 14px; border-radius: 4px; margin: 0 0 20px; max-width: 34em; }
+
+/* progress */
+.progress { max-width: 560px; margin: 18vh auto 0; padding: 0 24px; }
+.progress h2 { font-family: var(--serif); font-weight: 600; font-size: 24px; margin: 0 0 6px; }
+.progress p { color: var(--muted); margin: 0 0 18px; min-height: 1.5em; }
+.bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--blue); transition: width 0.4s ease; }
+
+/* results */
+.summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 28px; padding: 14px 20px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.summary strong { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+.summary span { color: var(--muted); font-size: 14px; }
+.desk { display: grid; grid-template-columns: 310px minmax(320px, 410px) minmax(0, 1fr); height: calc(100vh - 52px - 62px); }
+.pane { overflow: auto; border-right: 1px solid var(--line); background: var(--panel); min-height: 0; }
+.pane:last-child { border-right: 0; background: var(--bg); }
+
+.search { position: sticky; top: 0; background: var(--panel); padding: 10px 12px; border-bottom: 1px solid var(--line); z-index: 1; }
+.search input { width: 100%; padding: 7px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); font: inherit; }
+.group-title { padding: 12px 14px 6px; font-weight: 600; font-size: 13px; color: var(--muted); }
+.row { display: grid; grid-template-columns: 1fr 38px; grid-template-rows: auto auto; gap: 2px 8px; width: 100%; text-align: left;
+  background: none; border: 0; border-left: 4px solid transparent; padding: 8px 14px 9px 10px; border-bottom: 1px solid var(--line); }
+.row:hover { background: var(--bg); }
+.row[aria-current="true"] { background: var(--blue-soft); border-left-color: var(--blue); }
+.row .name { font-weight: 560; }
+.row.none .name { font-weight: 400; color: var(--muted); }
+.row .num { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.gauge { grid-column: 1 / 3; position: relative; height: 6px; background: var(--line); border-radius: 3px; margin-top: 3px; }
+.gauge b { position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue); border-radius: 3px; }
+.row.none .gauge b { background: var(--slate); }
+.gauge u { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink); text-decoration: none; }
+.close { font-size: 12px; color: var(--muted); }
+details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; font-size: 13px; color: var(--muted); border-bottom: 1px solid var(--line); }
+
+.detail { padding: 18px 20px 40px; }
+.detail h2 { font-family: var(--serif); font-size: 24px; font-weight: 600; margin: 0 0 6px; }
+.verdict { margin: 0 0 4px; font-weight: 600; }
+.verdict.found { color: var(--blue); }
+.verdict.none { color: var(--muted); }
+.why { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+.passage { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 5px solid var(--line); padding: 4px 0 4px 14px; margin: 0 0 18px; }
+.passage[aria-current="true"] { border-left-color: var(--mark); }
+.passage .quote { font-family: var(--serif); font-size: 16px; line-height: 1.62; display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
+.passage.open .quote { display: block; -webkit-line-clamp: unset; }
+.passage .meta { color: var(--muted); font-size: 13px; margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.chip { border: 1px solid var(--line); background: var(--panel); border-radius: 3px; padding: 1px 8px; font-size: 13px; }
+.chip:hover { border-color: var(--blue); }
+.link { background: none; border: 0; padding: 0; color: var(--blue); text-decoration: underline; font-size: 13px; }
+.empty { color: var(--muted); padding: 24px 20px; }
+
+.viewer-bar { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.viewer-bar .where { flex: 1; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.page-wrap { padding: 18px; display: flex; justify-content: center; }
+.page-wrap img { max-width: 100%; height: auto; background: #fff; border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); opacity: 1; transition: opacity 0.15s; }
+.page-wrap img.loading { opacity: 0.35; }
+
+.modes { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.modes .btn { flex: 1; font-size: 13.5px; padding: 5px 8px; }
+.modes .btn[aria-pressed="true"] { background: var(--blue-soft); border-color: var(--blue); font-weight: 600; }
+.notice { background: var(--mark-soft); border: 1px solid var(--line); border-left: 5px solid var(--mark); padding: 10px 14px; margin: 0 0 16px; font-size: 14px; }
+.ask-form textarea { width: 100%; min-height: 84px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); font: inherit; resize: vertical; }
+.consent { display: flex; gap: 8px; align-items: flex-start; margin: 10px 0; font-size: 13.5px; color: var(--muted); }
+.consent input { margin-top: 4px; }
+.answer { font-family: var(--serif); font-size: 17px; line-height: 1.6; margin: 10px 0 6px; white-space: pre-wrap; }
+.answer.none { color: var(--muted); }
+.qline { font-weight: 600; margin: 24px 0 0; }
+.src { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 5px solid var(--line); padding: 4px 0 4px 14px; margin: 0 0 14px; cursor: pointer; }
+.src[aria-current="true"] { border-left-color: var(--mark); }
+.src .quote { font-size: 14px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.src .meta { color: var(--muted); font-size: 13px; margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.src .tag { color: var(--muted); }
+.src.cited .tag { color: var(--blue); font-weight: 600; }
+.hist { display: block; width: 100%; text-align: left; background: none; border: 0; border-left: 4px solid transparent; border-bottom: 1px solid var(--line); padding: 9px 14px 9px 10px; }
+.hist:hover { background: var(--bg); }
+.hist[aria-current="true"] { background: var(--blue-soft); border-left-color: var(--blue); }
+.hist small { display: block; color: var(--muted); }
+
+/* polish */
+:root {
+  --bg: #edf0f6; --panel: #ffffff; --ink: #141b26; --muted: #596579; --line: #d7dde8;
+  --blue: #3556d6; --blue-soft: #e4e9fd; --ok: #1f8a5b; --warn: #a15c07; --slate: #8a94a3;
+  --shadow: 0 1px 2px rgba(20, 30, 60, 0.06), 0 8px 24px rgba(20, 30, 60, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0e15; --panel: #141b26; --ink: #e8edf5; --muted: #9aa5b7; --line: #283246;
+    --blue: #8aa4ff; --blue-soft: #1d2a4f; --ok: #4cc38a; --warn: #f0b45a; --slate: #6d7787;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+* { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.top { box-shadow: 0 1px 0 var(--line), 0 6px 20px rgba(20, 30, 60, 0.04); }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--blue); }
+.brand span { color: var(--ink); font-size: 17px; letter-spacing: 0.005em; }
+.btn { border-radius: 8px; transition: border-color 0.15s, background 0.15s, box-shadow 0.15s; }
+.btn.primary { box-shadow: 0 2px 8px rgba(53, 86, 214, 0.25); }
+.summary { gap: 8px 14px; }
+.summary strong { color: var(--blue); font-size: 22px; margin-right: 6px; }
+.summary span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 1px 11px; font-size: 13px; }
+.summary span:empty { display: none; }
+.summary span:last-child { background: none; border: 0; padding: 0; }
+.desk { border-top: 1px solid var(--line); }
+.pane { border-right: 1px solid var(--line); }
+.row { padding: 10px 14px 11px 10px; transition: background 0.12s; }
+.row .name::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-right: 9px; vertical-align: 1px; }
+.row.none .name::before { background: var(--slate); }
+.row .num { align-self: start; background: var(--blue-soft); color: var(--blue); border-radius: 999px; padding: 0 9px; font-weight: 650; font-size: 12.5px; text-align: center; }
+.row.none .num { background: transparent; color: var(--muted); font-weight: 500; }
+.row .gauge { height: 7px; border-radius: 4px; }
+.row .gauge b { border-radius: 4px; }
+.badge { margin-left: 9px; font-size: 10.5px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.05em; color: var(--warn);
+  border: 1px solid var(--warn); border-radius: 999px; padding: 0 7px; vertical-align: 1px; white-space: nowrap; }
+.group-title { text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; }
+.detail h2 { letter-spacing: -0.005em; }
+.verdict { display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 14px; margin-bottom: 8px; }
+.verdict.found { background: var(--blue-soft); }
+.verdict.none { background: var(--bg); }
+.passage, .src { background: var(--bg); border-radius: 0 10px 10px 0; padding: 10px 14px; transition: background 0.12s; }
+.passage:hover, .src:hover { background: var(--blue-soft); }
+.passage[aria-current="true"], .src[aria-current="true"] { background: var(--mark-soft); }
+.hist { transition: background 0.12s; }
+.page-wrap img { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); }
+
+@media (max-width: 1100px) {
+  .desk { grid-template-columns: 1fr; height: auto; }
+  .pane { border-right: 0; border-bottom: 1px solid var(--line); max-height: 60vh; }
+  .pane:last-child { max-height: none; }
+}
+@media (max-width: 700px) {
+  .top { height: auto; min-height: 52px; padding: 8px 14px; flex-wrap: wrap; }
+  .top-actions .btn { padding: 5px 10px; font-size: 14px; white-space: nowrap; }
+  .upload { padding: 36px 16px 40px; }
+}
+@media (prefers-reduced-motion: reduce) { .bar span, .page-wrap img { transition: none; } }
+/* theme switch */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #edf0f6; --panel: #ffffff; --ink: #141b26; --muted: #596579; --line: #d7dde8;
+  --blue: #3556d6; --blue-soft: #e4e9fd; --mark: #ffd84d; --mark-soft: #fff3bf; --ok: #1f8a5b; --warn: #a15c07;
+  --slate: #8a94a3; --alert: #9c2b2b; --alert-soft: #fbe9e9;
+  --shadow: 0 1px 2px rgba(20, 30, 60, 0.06), 0 8px 24px rgba(20, 30, 60, 0.08);
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0e15; --panel: #141b26; --ink: #e8edf5; --muted: #9aa5b7; --line: #283246;
+  --blue: #8aa4ff; --blue-soft: #1d2a4f; --mark: #f2c94c; --mark-soft: #3a3214; --ok: #4cc38a; --warn: #f0b45a;
+  --slate: #6d7787; --alert: #ff9b9b; --alert-soft: #3a1d1d;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.top-right { display: flex; align-items: center; gap: 8px; }
+.theme { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; background: var(--panel); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 10px; transition: border-color 0.15s, background 0.15s; }
+.theme:hover { border-color: var(--blue); background: var(--blue-soft); }
+.theme svg { display: block; }
+/* about sections */
+.sec { margin-top: 56px; text-align: left; }
+.sec h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; letter-spacing: -0.01em; margin: 0 0 6px; }
+.upload .sec .sub { margin: 0 0 16px; max-width: none; }
+.steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 0; margin: 16px 0 0; }
+.steps li { counter-increment: s; position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 46px 18px 16px; box-shadow: var(--shadow); }
+.steps li::before { content: counter(s); position: absolute; top: 12px; left: 16px; width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: var(--panel);
+  font-weight: 650; font-size: 13px; display: grid; place-items: center; }
+.steps b { display: block; font-weight: 650; margin-bottom: 4px; }
+.steps span { color: var(--muted); font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow); }
+.stat strong { display: block; font-size: 26px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.15; color: var(--blue); margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13.5px; line-height: 1.4; }
+.cats { display: flex; flex-wrap: wrap; gap: 8px 7px; margin-top: 14px; }
+.cat { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; font-size: 13px; font-weight: 500; letter-spacing: 0.01em; line-height: 1.2; color: var(--ink); transition: border-color 0.15s, background 0.15s; }
+.cat:hover { border-color: var(--blue); background: var(--blue-soft); }
+.feats.two { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 16px; }
+.limits { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+.limits li { margin-bottom: 6px; }
+@media (max-width: 760px) { .steps, .stats, .feats.two { grid-template-columns: 1fr; } }
+/* back navigation */
+.brand { cursor: pointer; }
+.resume { margin: 0 auto 18px; }
+.resume .btn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: var(--blue-soft); border-color: var(--blue); }
+/* clause list */
+.row { grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; padding: 11px 14px 12px 12px; }
+.row .name { position: relative; padding-left: 18px; font-size: 14.5px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.row .name::before { position: absolute; left: 0; top: 0.42em; margin: 0; vertical-align: baseline; }
+.row.none .name { font-weight: 450; }
+.row .num { min-width: 44px; padding: 1px 9px; font-size: 12.5px; line-height: 1.4; }
+.row .gauge { grid-column: 1 / -1; margin-top: 8px; }
+.row .note { grid-column: 1 / -1; margin-top: 6px; padding-left: 18px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--warn); }
+.row .note::before { content: "\25B2"; font-size: 8px; margin-right: 6px; vertical-align: 1px; }
+.group-title { padding: 14px 14px 6px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand" id="brand" role="link" tabindex="0" title="Back to the front page"><svg class="logo" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><rect x="3" y="2" width="18" height="20" rx="3" fill="currentColor" opacity="0.14"/><rect x="3" y="2" width="18" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 8h10M7 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><rect x="6" y="10.4" width="12" height="3.2" rx="1" fill="#ffd84d"/></svg><span>DocuMind AI</span></div>
+  <div class="top-right">
+  <div class="top-actions" id="topActions" hidden>
+    <button class="btn" id="btnBack" type="button" title="Back to the front page">&larr; Back</button>
+    <button class="btn" id="btnReport" hidden title="Opens a readable PDF report in a new tab. Use the viewer to read it or save it.">Read report (PDF)</button>
+    <button class="btn" id="btnDownload" hidden>Download results (JSON)</button>
+    <button class="btn" id="btnNew">New document</button>
+  </div>
+  <button class="theme" id="btnTheme" type="button" aria-label="Switch theme" title="Switch between light and dark"></button>
+  </div>
+</header>
+
+<main>
+  <section class="upload" id="viewUpload">
+    <span class="eyebrow"><i></i>Private by default. The clause finder runs on this computer.</span>
+    <h1>Find <span class="hl">the clause</span>, the page, and how sure the model is.</h1>
+    <p class="lead">Upload a contract. DocuMind checks 41 clause types and shows where each one appears, with the passage highlighted on the page. When a clause is missing, it simply says no.</p>
+    <div class="error" id="error" role="alert" hidden></div>
+    <div class="resume" id="resume" hidden><button class="btn" id="btnResume" type="button"></button></div>
+    <div class="sheet" id="sheet" tabindex="0" role="button" aria-label="Drop a contract here or press Enter to choose one">
+      <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 16V5m0 0l-4 4m4-4l4 4M5 15v3a2 2 0 002 2h10a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Drop a contract here</b><small>PDF, Word, ODT or RTF, up to 50 MB</small></span>
+      <input type="file" id="file" accept="application/pdf,.pdf,.docx,.doc,.odt,.rtf" tabindex="-1" aria-hidden="true">
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="btnChoose">Choose a contract</button>
+      <button class="btn" id="btnGeneral" title="Skips the 41 clause checks and lets you ask your own questions, answered by Groq with page citations">Ask questions about any document</button>
+    </div>
+    <div class="feats">
+      <div class="feat"><b>The exact clause and page</b><span>Each clause type is highlighted on the original page, not paraphrased.</span></div>
+      <div class="feat"><b>A score you can read</b><span>Every answer shows its score against the decision threshold, and close calls are flagged.</span></div>
+      <div class="feat"><b>It says "not found"</b><span>On held-out test contracts it correctly skipped 97% of the clauses that were absent.</span></div>
+    </div>
+    <div class="sec">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><b>Upload</b><span>PDF, Word, ODT or RTF. Scanned PDFs are read with OCR first.</span></li>
+        <li><b>Check every clause type</b><span>A Legal-BERT model fine-tuned on CUAD, a set of 510 expert-labelled contracts, looks for each clause type and also learns when a clause is not there.</span></li>
+        <li><b>Review the evidence</b><span>See the passage highlighted on its page, its score against the threshold, and download everything as JSON.</span></li>
+      </ol>
+    </div>
+    <div class="sec">
+      <h2>How well it works</h2>
+      <p class="sub">Measured once on held-out test contracts that the model never saw in training or tuning.</p>
+      <div class="stats">
+        <div class="stat"><strong>0.94</strong><span>AUPR for telling a present clause from an absent one</span></div>
+        <div class="stat"><strong>92%</strong><span>precision at 80% recall</span></div>
+        <div class="stat"><strong>97%</strong><span>of absent clauses correctly reported as not found</span></div>
+        <div class="stat"><strong>81%</strong><span>of the clauses that are really there are found</span></div>
+        <div class="stat"><strong>96%</strong><span>of flagged clauses have the right passage in the top 3</span></div>
+        <div class="stat"><strong>0.89</strong><span>F1, against 0.70 for a model that always says "not found"</span></div>
+      </div>
+    </div>
+    <div class="sec" id="catSec" hidden>
+      <h2>What it checks: <span id="catCount"></span> clause types</h2>
+      <div class="cats" id="catChips"></div>
+    </div>
+    <div class="sec">
+      <h2>Two ways to use it</h2>
+      <div class="feats two">
+        <div class="feat"><b>Clause finder</b><span>Runs entirely on this computer and nothing leaves it. Built for contracts.</span></div>
+        <div class="feat"><b>Ask a question</b><span>Works on any document. Your question and the few best-matching excerpts go to Groq to write a cited answer, only after you tick a box each time.</span></div>
+      </div>
+    </div>
+    <div class="sec">
+      <h2>Know the limits</h2>
+      <ul class="limits">
+        <li>It finds about 81% of the clauses that are really there, so "not found" is a strong hint, not proof. Check the page.</li>
+        <li>Scores are raw model scores compared with a threshold. They are not probabilities.</li>
+        <li>Handwriting is not supported, and scans can contain recognition errors.</li>
+        <li>Answers in Ask mode are written by an AI model from retrieved excerpts. Check the highlighted page before relying on them.</li>
+        <li>This is a research and portfolio project, not legal advice.</li>
+      </ul>
+    </div>
+    <p class="fine">Scanned PDFs are read with OCR, which is slower and can contain recognition errors. Ask-a-question mode sends only the passages it needs to Groq, and only after you tick a box each time.</p>
+  </section>
+
+  <section class="progress" id="viewProgress" hidden>
+    <h2 id="progTitle">Reading the contract</h2>
+    <p id="progText" aria-live="polite"></p>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progBar"><span id="progFill"></span></div>
+  </section>
+
+  <section id="viewResults" hidden>
+    <div class="summary" id="summary"></div>
+    <div class="desk">
+      <nav class="pane" aria-label="Clause types and questions">
+        <div class="modes" id="modes">
+          <button class="btn" id="modeClauses" type="button" aria-pressed="true">Clause types</button>
+          <button class="btn" id="modeAsk" type="button" aria-pressed="false">Ask a question</button>
+        </div>
+        <div class="search" id="searchBox"><input type="search" id="search" placeholder="Filter clause types" aria-label="Filter clause types"></div>
+        <div id="list"></div>
+        <div id="askHistory" hidden></div>
+      </nav>
+      <section class="pane" id="detailPane" aria-live="polite"><div class="detail" id="detail"></div></section>
+      <section class="pane" aria-label="Contract page">
+        <div class="viewer-bar">
+          <button class="btn" id="prev" aria-label="Previous page">Previous</button>
+          <button class="btn" id="next" aria-label="Next page">Next</button>
+          <span class="where" id="where"></span>
+        </div>
+        <div class="page-wrap"><img id="pageImg" alt="" class="loading"></div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const GAUGE_MIN = -12, GAUGE_MAX = 22;
+  const state = { docId: null, doc: null, threshold: 0, results: [], selected: null, passageIdx: 0, page: 1, timer: null, filter: "",
+    mode: "clauses", asks: [], askIdx: 0, sourceIdx: 0, draft: "", consent: false, asking: false, askError: "", general: null, nextAnalyze: true, parked: false, running: false, resultsReady: false };
+
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;   // textContent only: document text is untrusted
+    return n;
+  }
+  const fmt = (x) => (x === null || x === undefined ? "n/a" : x.toFixed(1));
+  const clamp01 = (x) => Math.max(0, Math.min(1, x));
+  const gaugePos = (s) => clamp01((s - GAUGE_MIN) / (GAUGE_MAX - GAUGE_MIN)) * 100;
+
+  let applyingHistory = false;   // true while the browser Back or Forward button is being handled
+
+  function viewName(view) { return "#" + view.slice(4).toLowerCase(); }
+
+  function updateResume() {
+    const box = $("resume");
+    const visible = !$("viewUpload").hidden && state.doc && (state.resultsReady || state.running);
+    box.hidden = !visible;
+    if (visible) $("btnResume").textContent = (state.running ? "Return to progress: " : "Return to your last result: ") + (state.doc.filename || "document");
+  }
+
+  function goBack() {
+    if ($("viewUpload").hidden) history.back();
+  }
+
+  function goResume() {
+    state.parked = false;
+    show(state.resultsReady ? "viewResults" : "viewProgress");
+  }
+
+  function show(view) {
+    for (const v of ["viewUpload", "viewProgress", "viewResults"]) $(v).hidden = v !== view;
+    $("topActions").hidden = view === "viewUpload";
+    $("btnDownload").hidden = view !== "viewResults";
+    $("btnReport").hidden = view !== "viewResults" || !(state.doc && state.doc.analyze !== false);
+    if (!applyingHistory) {
+      const cur = (history.state && history.state.view) || "viewUpload";
+      if (view === "viewUpload") { if (cur !== "viewUpload") history.back(); }
+      else if (cur === "viewUpload") history.pushState({ view }, "", viewName(view));
+      else history.replaceState({ view }, "", viewName(view));
+    }
+    updateResume();
+  }
+  function showError(msg) { const e = $("error"); e.textContent = msg; e.hidden = false; }
+  function hideError() { $("error").hidden = true; }
+
+  async function errorMessage(resp) {
+    try { const j = await resp.json(); if (typeof j.detail === "string") return j.detail; } catch (e) { /* ignore */ }
+    return "The request failed (status " + resp.status + ").";
+  }
+
+  async function upload(file) {
+    if (!file) return;
+    hideError();
+    if (!/\.(pdf|docx|doc|odt|rtf)$/i.test(file.name)) { showError("Please choose a PDF or Word file."); return; }
+    state.resultsReady = false; state.parked = false; state.running = false;
+    show("viewProgress");
+    setProgress(0, 1, "Uploading " + file.name);
+    const body = new FormData();
+    body.append("file", file);
+    let resp;
+    const analyze = state.nextAnalyze; state.nextAnalyze = true;
+    try { resp = await fetch("/api/documents?analyze=" + analyze, { method: "POST", body }); }
+    catch (e) { show("viewUpload"); showError("Could not reach the server. Check that it is still running."); return; }
+    if (!resp.ok) { const msg = await errorMessage(resp); show("viewUpload"); showError(msg); return; }
+    const info = await resp.json();
+    state.docId = info.id; state.doc = info; state.running = true;
+    poll();
+  }
+
+  function setProgress(done, total, text) {
+    const pct = total ? Math.round((100 * done) / total) : 0;
+    $("progFill").style.width = pct + "%";
+    $("progBar").setAttribute("aria-valuenow", String(pct));
+    $("progText").textContent = text;
+  }
+
+  function poll() {
+    clearInterval(state.timer);
+    const tick = async () => {
+      let resp;
+      try { resp = await fetch("/api/documents/" + state.docId); } catch (e) { return; }
+      if (!resp.ok) return;
+      const info = await resp.json();
+      if (info.state === "queued") setProgress(0, 1, "Waiting for the model");
+      else if (info.state === "running") setProgress(info.done, info.total, "Checked " + info.done + " of " + info.total + " clause types" + (info.current ? ", latest: " + info.current : ""));
+      else if (info.state === "ocr") setProgress(info.done, info.total, "Reading scanned pages with OCR: page " + info.done + " of " + info.total);
+      else if (info.state === "done") { clearInterval(state.timer); state.running = false; setProgress(1, 1, "Done"); loadResults(); }
+      else if (info.state === "error") { clearInterval(state.timer); state.running = false; show("viewUpload"); showError("Analysis failed: " + (info.error || "unknown error")); }
+    };
+    state.timer = setInterval(tick, 700);
+    tick();
+  }
+
+  async function loadResults() {
+    const resp = await fetch("/api/documents/" + state.docId + "/results");
+    if (!resp.ok) { show("viewUpload"); showError(await errorMessage(resp)); return; }
+    const data = await resp.json();
+    state.doc = data.document; state.threshold = data.threshold; state.results = data.results;
+    const bestFirst = [...state.results].sort((a, b) => (b.present_score ?? -1e9) - (a.present_score ?? -1e9));
+    state.results = bestFirst;
+    renderSummary();
+    renderList();
+    state.resultsReady = true;
+    if (state.parked) updateResume(); else show("viewResults");
+    const first = state.results.find((r) => r.present) || state.results[0];
+    if (first) select(first.category);
+    if (state.doc.analyze === false) { $("modes").hidden = true; setMode("ask"); }
+  }
+
+  function renderSummary() {
+    const found = state.results.filter((r) => r.present).length;
+    const s = $("summary");
+    s.replaceChildren(
+      el("strong", "", state.doc.analyze === false ? "Ask questions about this document" : found + " of " + state.results.length + " clause types found"),
+      el("span", "", state.doc.filename),
+      el("span", "", state.doc.n_pages + " pages"),
+      el("span", "", state.doc.ocr ? "text recognised by OCR, so it may contain errors" : ""),
+      el("span", "", state.doc.seconds ? "analysed in " + state.doc.seconds + " s" : ""),
+      el("span", "", state.doc.analyze === false ? "" : "A clause counts as found at a score of " + state.threshold + " or higher.")
+    );
+  }
+
+  function makeRow(r) {
+    const b = el("button", "row" + (r.present ? "" : " none"));
+    b.type = "button";
+    b.dataset.cat = r.category;
+    b.setAttribute("aria-current", String(r.category === state.selected));
+    b.append(el("span", "name", r.category), el("span", "num", fmt(r.present_score)));
+    const g = el("span", "gauge");
+    const fill = el("b"); fill.style.width = r.present_score === null ? "0%" : gaugePos(r.present_score) + "%";
+    const tick = el("u"); tick.style.left = gaugePos(state.threshold) + "%";
+    g.append(fill, tick);
+    b.append(g);
+    if (r.present && r.margin !== null && r.margin < 3) b.append(el("span", "note", "Close call: barely above the threshold"));
+    b.addEventListener("click", () => select(r.category));
+    return b;
+  }
+
+  function renderList() {
+    const q = state.filter.trim().toLowerCase();
+    const match = (r) => !q || r.category.toLowerCase().includes(q);
+    const found = state.results.filter((r) => r.present && match(r));
+    const none = state.results.filter((r) => !r.present && match(r));
+    const list = $("list");
+    list.replaceChildren();
+    list.append(el("div", "group-title", "Found (" + found.length + ")"));
+    found.forEach((r) => list.append(makeRow(r)));
+    if (!found.length) list.append(el("div", "empty", q ? "No found clause matches this filter." : "No clause types were found."));
+    const d = el("details", "nf");
+    d.open = !!q;
+    d.append(el("summary", "", "Not found (" + none.length + ")"));
+    none.forEach((r) => d.append(makeRow(r)));
+    list.append(d);
+  }
+
+  const current = () => state.results.find((r) => r.category === state.selected);
+
+  function select(cat) {
+    state.selected = cat; state.passageIdx = 0;
+    const r = current();
+    const p = r && r.passages[0];
+    state.page = p && p.pages.length ? p.pages[0] : 1;
+    for (const b of document.querySelectorAll(".row")) b.setAttribute("aria-current", String(b.dataset.cat === cat));
+    renderDetail(); renderViewer();
+  }
+
+  function renderDetail() {
+    const r = current(); const box = $("detail");
+    box.replaceChildren();
+    if (state.mode === "ask") { renderAsk(); return; }
+    if (!r) return;
+    box.append(el("h2", "", r.category));
+    if (r.present) {
+      box.append(el("p", "verdict found", "Found, score " + fmt(r.present_score) + " (threshold " + state.threshold + ", margin +" + fmt(r.margin) + ")"));
+      box.append(el("p", "why", "The score is how much better the best passage beats \"no such clause here\". The further past the threshold, the more sure the model is."));
+    } else {
+      box.append(el("p", "verdict none", "Not found. The best passage scored " + fmt(r.present_score) + ", below the threshold of " + state.threshold + "."));
+      box.append(el("p", "why", "Showing the closest passage for reference. The model does not consider it a match."));
+    }
+    if (!r.passages.length) { box.append(el("p", "empty", "The model found no candidate passage for this clause type.")); return; }
+    r.passages.forEach((p, i) => {
+      const b = el("div", "passage");
+      b.setAttribute("role", "button"); b.tabIndex = 0;
+      b.setAttribute("aria-current", String(i === state.passageIdx));
+      const quote = el("div", "quote", p.text);
+      const meta = el("div", "meta");
+      meta.append(el("span", "", "Passage " + (i + 1) + ", score " + fmt(p.score)));
+      p.pages.forEach((pg) => {
+        const c = el("button", "chip", "Page " + pg); c.type = "button";
+        c.addEventListener("click", (ev) => { ev.stopPropagation(); state.passageIdx = i; state.page = pg; renderDetail(); renderViewer(); });
+        meta.append(c);
+      });
+      if (p.text.length > 450) {
+        const t = el("button", "link", "Show full passage"); t.type = "button";
+        t.addEventListener("click", (ev) => { ev.stopPropagation(); const open = b.classList.toggle("open"); t.textContent = open ? "Show less" : "Show full passage"; });
+        meta.append(t);
+      }
+      b.append(quote, meta);
+      const choose = () => { state.passageIdx = i; if (p.pages.length) state.page = p.pages[0]; renderDetail(); renderViewer(); };
+      b.addEventListener("click", choose);
+      b.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); choose(); } });
+      box.append(b);
+    });
+  }
+
+  function activePassage() {
+    if (state.mode === "ask") { const a = state.asks[state.askIdx]; return a ? a.passages[state.sourceIdx] : undefined; }
+    const r = current();
+    return r && r.passages[state.passageIdx];
+  }
+
+  async function loadAbout() {
+    try {
+      const r = await fetch("/api/about");
+      if (!r.ok) return;
+      const d = await r.json();
+      const box = $("catChips");
+      if (!box || !d.categories || !d.categories.length) return;
+      d.categories.forEach((c) => box.append(el("span", "cat", c)));
+      $("catCount").textContent = String(d.categories.length);
+      $("catSec").hidden = false;
+    } catch (e) { /* the page works without the list */ }
+  }
+
+  async function loadGeneralInfo() {
+    try { const r = await fetch("/api/general"); if (r.ok) state.general = await r.json(); } catch (e) { /* ignore */ }
+  }
+
+  function pickSource(i) {
+    state.sourceIdx = i;
+    const a = state.asks[state.askIdx]; const p = a && a.passages[i];
+    if (p && p.pages.length) state.page = p.pages[0];
+    renderDetail(); renderViewer();
+  }
+
+  function renderAskHistory() {
+    const box = $("askHistory"); box.replaceChildren();
+    if (!state.asks.length) { box.append(el("div", "empty", "Your questions will be listed here.")); return; }
+    state.asks.forEach((a, i) => {
+      const b = el("button", "hist"); b.type = "button";
+      b.setAttribute("aria-current", String(i === state.askIdx));
+      b.append(el("span", "", a.question.length > 70 ? a.question.slice(0, 70) + "..." : a.question), el("small", "", a.found ? "Answered" : "Not found in the document"));
+      b.addEventListener("click", () => { state.askIdx = i; renderAskHistory(); pickSource(Math.max(0, (a.cited[0] || 1) - 1)); });
+      box.append(b);
+    });
+  }
+
+  function renderAsk() {
+    const box = $("detail");
+    box.append(el("h2", "", "Ask this document"));
+    box.append(el("p", "why", "The answer is written from the best-matching excerpts of this file and cites them. Your question and those excerpts are sent to Groq, so this mode needs your permission."));
+    const g = state.general;
+    if (!g || !g.available) {
+      box.append(el("p", "notice", "General mode is off. Stop the server, set the " + ((g && g.key_variable) || "GROQ_API_KEY") + " environment variable to your Groq key, and start it again."));
+    }
+    const form = el("div", "ask-form");
+    const ta = el("textarea"); ta.maxLength = 500; ta.placeholder = "Ask a question about this document"; ta.value = state.draft; ta.setAttribute("aria-label", "Your question");
+    const label = el("label", "consent"); const cb = el("input"); cb.type = "checkbox"; cb.checked = state.consent;
+    label.append(cb, el("span", "", "I allow DocuMind to send my question and the retrieved excerpts of this document to Groq."));
+    const btn = el("button", "btn primary", state.asking ? "Asking..." : "Ask"); btn.type = "button";
+    const sync = () => { btn.disabled = state.asking || !(g && g.available) || !state.consent || !state.draft.trim(); };
+    ta.addEventListener("input", () => { state.draft = ta.value; sync(); });
+    cb.addEventListener("change", () => { state.consent = cb.checked; sync(); });
+    btn.addEventListener("click", ask);
+    sync();
+    form.append(ta, label, btn);
+    box.append(form);
+    if (state.askError) box.append(el("p", "notice", state.askError));
+    const a = state.asks[state.askIdx];
+    if (!a) return;
+    box.append(el("p", "qline", a.question));
+    box.append(el("div", "answer" + (a.found ? "" : " none"), a.answer));
+    box.append(el("p", "why", a.found
+      ? "Written by " + a.model + " from the excerpts below. Check the highlighted page before relying on it."
+      : "The closest excerpts are listed below so you can check for yourself. None of them was used as an answer."));
+    a.passages.forEach((p, i) => {
+      const s = el("div", "src" + (a.cited.includes(i + 1) ? " cited" : ""));
+      s.setAttribute("role", "button"); s.tabIndex = 0;
+      s.setAttribute("aria-current", String(i === state.sourceIdx));
+      const meta = el("div", "meta");
+      meta.append(el("span", "tag", "[" + (i + 1) + "]" + (a.cited.includes(i + 1) ? " cited" : "")));
+      p.pages.forEach((pg) => meta.append(el("span", "chip", "Page " + pg)));
+      s.append(el("div", "quote", p.text), meta);
+      const choose = () => pickSource(i);
+      s.addEventListener("click", choose);
+      s.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); choose(); } });
+      box.append(s);
+    });
+  }
+
+  async function ask() {
+    const question = state.draft.trim();
+    if (!question || !state.consent) return;
+    state.asking = true; state.askError = ""; renderDetail();
+    let resp;
+    try {
+      resp = await fetch("/api/documents/" + state.docId + "/ask", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question, allow_network: state.consent }) });
+    } catch (e) { state.asking = false; state.askError = "Could not reach the server."; renderDetail(); return; }
+    state.asking = false;
+    if (!resp.ok) { state.askError = await errorMessage(resp); renderDetail(); return; }
+    const data = await resp.json();
+    state.asks.unshift(data); state.askIdx = 0; state.draft = "";
+    renderAskHistory();
+    pickSource(Math.max(0, (data.cited[0] || 1) - 1));
+  }
+
+  function setMode(mode) {
+    state.mode = mode;
+    const asking = mode === "ask";
+    $("modeClauses").setAttribute("aria-pressed", String(!asking)); $("modeAsk").setAttribute("aria-pressed", String(asking));
+    $("searchBox").hidden = asking; $("list").hidden = asking; $("askHistory").hidden = !asking;
+    if (asking) renderAskHistory();
+    renderDetail(); renderViewer();
+  }
+
+  function scrollToHighlight(p) {
+    const pane = $("pageImg").closest(".pane");
+    if (!pane) return;
+    const size = state.doc.page_sizes && state.doc.page_sizes[state.page - 1];
+    const hl = p && (p.highlights || []).find((h) => h.page === state.page);
+    if (!size || !hl || !hl.rects.length) { pane.scrollTo({ top: 0 }); return; }
+    const top = Math.min(...hl.rects.map((r) => r[1]));
+    const img = $("pageImg").getBoundingClientRect(), box = pane.getBoundingClientRect();
+    const y = pane.scrollTop + (img.top - box.top) + (top / size[1]) * img.height;
+    pane.scrollTo({ top: Math.max(0, y - 120), behavior: "smooth" });
+  }
+
+  function renderViewer() {
+    const p = activePassage();
+    const n = state.doc.n_pages;
+    state.page = Math.max(1, Math.min(n, state.page));
+    $("where").textContent = "Page " + state.page + " of " + n + (p && p.pages.includes(state.page) ? ", passage highlighted" : "");
+    $("prev").disabled = state.page <= 1; $("next").disabled = state.page >= n;
+    const img = $("pageImg");
+    let url = "/api/documents/" + state.docId + "/page/" + state.page + ".png";
+    if (p) url += "?hl=" + p.char_start + "-" + p.char_end;
+    img.classList.add("loading");
+    img.alt = "Page " + state.page + " of the contract" + (p ? " with the selected passage highlighted" : "");
+    img.onload = () => { img.classList.remove("loading"); scrollToHighlight(p); };
+    img.onerror = () => { img.classList.remove("loading"); img.alt = "This page could not be loaded."; };
+    img.src = url;
+  }
+
+  // wiring
+  const SUN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+  const MOON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+  const currentTheme = () => document.documentElement.getAttribute("data-theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const paintThemeButton = () => {
+    const dark = currentTheme() === "dark";
+    $("btnTheme").innerHTML = dark ? SUN : MOON;
+    $("btnTheme").setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    $("btnTheme").title = dark ? "Switch to light theme" : "Switch to dark theme";
+  };
+  $("btnTheme").addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+    try { localStorage.setItem("documind-theme", next); } catch (e) {}
+    paintThemeButton();
+  });
+  paintThemeButton();
+  $("btnChoose").addEventListener("click", () => { state.nextAnalyze = true; $("file").click(); });
+  $("btnGeneral").addEventListener("click", () => { state.nextAnalyze = false; $("file").click(); });
+  $("sheet").addEventListener("click", (e) => { if (e.isTrusted) state.nextAnalyze = true; }, true);
+  $("modeClauses").addEventListener("click", () => setMode("clauses"));
+  $("modeAsk").addEventListener("click", () => setMode("ask"));
+  loadGeneralInfo();
+  loadAbout();
+  $("file").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; upload(f); });
+  $("sheet").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("file").click(); } });
+  for (const ev of ["dragenter", "dragover"]) document.addEventListener(ev, (e) => { e.preventDefault(); $("sheet").classList.add("drag"); });
+  for (const ev of ["dragleave", "drop"]) document.addEventListener(ev, (e) => { e.preventDefault(); $("sheet").classList.remove("drag"); });
+  document.addEventListener("drop", (e) => { if ($("viewUpload").hidden) return; state.nextAnalyze = true; upload(e.dataTransfer.files[0]); });
+  $("search").addEventListener("input", (e) => { state.filter = e.target.value; renderList(); });
+  $("prev").addEventListener("click", () => { state.page -= 1; renderViewer(); });
+  $("next").addEventListener("click", () => { state.page += 1; renderViewer(); });
+  $("btnNew").addEventListener("click", () => location.reload());
+  history.replaceState({ view: "viewUpload" }, "", location.pathname + location.search);
+  $("btnBack").addEventListener("click", goBack);
+  $("btnResume").addEventListener("click", goResume);
+  $("brand").addEventListener("click", goBack);
+  $("brand").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goBack(); } });
+  window.addEventListener("popstate", (e) => {
+    let v = (e.state && e.state.view) || "viewUpload";
+    if (v === "viewProgress" && !state.running) v = state.resultsReady ? "viewResults" : "viewUpload";
+    if (v === "viewResults" && !state.resultsReady) v = state.running ? "viewProgress" : "viewUpload";
+    state.parked = v === "viewUpload" && state.running;
+    applyingHistory = true;
+    show(v);
+    applyingHistory = false;
+  });
+  $("btnReport").addEventListener("click", () => window.open("/api/documents/" + state.docId + "/report.pdf", "_blank"));
+  $("btnDownload").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify({ document: state.doc, threshold: state.threshold, results: state.results }, null, 2)], { type: "application/json" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+    a.download = (state.doc.filename || "contract").replace(/\.pdf$/i, "") + "_clauses.json"; a.click(); URL.revokeObjectURL(a.href);
+  });
+  $("list").addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+    const rows = [...document.querySelectorAll("#list .row")]; const i = rows.indexOf(document.activeElement);
+    if (i < 0) return; e.preventDefault();
+    const next = rows[i + (e.key === "ArrowDown" ? 1 : -1)]; if (next) { next.focus(); next.click(); }
+  });
+})();
+</script>
+</body>
+</html>

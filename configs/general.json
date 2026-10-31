@@ -1,0 +1,12 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "base_url": "https://api.groq.com/openai/v1",
+  "embed_model": "BAAI/bge-small-en-v1.5",
+  "top_k": 6,
+  "chunk_size": 120,
+  "chunk_stride": 60,
+  "timeout_s": 60,
+  "max_question_chars": 500,
+  "max_tokens": 1500,
+  "reasoning_effort": "low"
+}

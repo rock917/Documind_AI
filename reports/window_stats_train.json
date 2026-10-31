@@ -1,0 +1,30 @@
+{
+  "split": "train",
+  "tokenizer": "nlpaueb/legal-bert-base-uncased",
+  "max_length": 384,
+  "stride": 128,
+  "contracts": 357,
+  "windows_per_contract": {
+    "mean": 48.7,
+    "p50": 31.0,
+    "p90": 111.40000000000003,
+    "p99": 262.4,
+    "max": 356.0
+  },
+  "estimated_total_windows": 713072,
+  "sampled_answered_examples": 1500,
+  "answers_checked": 2939,
+  "answers_fully_inside_some_window": 2881,
+  "answers_in_no_single_window": 58,
+  "fraction_answers_in_no_single_window": 0.0197,
+  "windows_in_sample": 98680,
+  "windows_containing_an_answer": 2650,
+  "fraction_windows_with_answer_in_answered_examples": 0.0269,
+  "unfit_answer_words": {
+    "mean": 185.6,
+    "p50": 172.5,
+    "p90": 300.50000000000006,
+    "p99": 360.75,
+    "max": 375.0
+  }
+}

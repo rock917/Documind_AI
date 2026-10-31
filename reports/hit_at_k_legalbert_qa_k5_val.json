@@ -1,0 +1,287 @@
+{
+  "threshold": 8.69,
+  "all_present": {
+    "n": 722,
+    "hit@1": {
+      "point": 0.814404432132964,
+      "lo": 0.775083679684028,
+      "hi": 0.8516825591755159
+    },
+    "hit@3": {
+      "point": 0.9196675900277008,
+      "lo": 0.8973254742547425,
+      "hi": 0.9396122750394386
+    },
+    "hit@5": {
+      "point": 0.9501385041551247,
+      "lo": 0.9306486028847445,
+      "hi": 0.9666699867197875
+    }
+  },
+  "present_and_flagged": {
+    "n": 596,
+    "hit@1": {
+      "point": 0.8758389261744967,
+      "lo": 0.8429956860793097,
+      "hi": 0.907620641409381
+    },
+    "hit@3": {
+      "point": 0.9681208053691275,
+      "lo": 0.9527632196607569,
+      "hi": 0.9812614441006385
+    },
+    "hit@5": {
+      "point": 0.9815436241610739,
+      "lo": 0.9693028437669373,
+      "hi": 0.9918313916475682
+    }
+  },
+  "per_category": {
+    "Agreement Date": {
+      "n_present": 45,
+      "hit@1": 0.9333333333333333,
+      "hit@3": 0.9555555555555556,
+      "hit@5": 0.9555555555555556
+    },
+    "Anti-Assignment": {
+      "n_present": 40,
+      "hit@1": 0.925,
+      "hit@3": 0.975,
+      "hit@5": 1.0
+    },
+    "Cap On Liability": {
+      "n_present": 25,
+      "hit@1": 0.88,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Document Name": {
+      "n_present": 51,
+      "hit@1": 0.9607843137254902,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Effective Date": {
+      "n_present": 40,
+      "hit@1": 0.65,
+      "hit@3": 0.925,
+      "hit@5": 0.925
+    },
+    "Expiration Date": {
+      "n_present": 42,
+      "hit@1": 0.8571428571428571,
+      "hit@3": 0.9047619047619048,
+      "hit@5": 0.9285714285714286
+    },
+    "Governing Law": {
+      "n_present": 48,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "License Grant": {
+      "n_present": 21,
+      "hit@1": 0.8571428571428571,
+      "hit@3": 0.9047619047619048,
+      "hit@5": 0.9047619047619048
+    },
+    "Non-Transferable License": {
+      "n_present": 18,
+      "hit@1": 0.5555555555555556,
+      "hit@3": 0.7777777777777778,
+      "hit@5": 0.8333333333333334
+    },
+    "Parties": {
+      "n_present": 51,
+      "hit@1": 0.9215686274509803,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Post-Termination Services": {
+      "n_present": 26,
+      "hit@1": 0.6153846153846154,
+      "hit@3": 0.7692307692307693,
+      "hit@5": 0.8846153846153846
+    },
+    "Uncapped Liability": {
+      "n_present": 6,
+      "hit@1": 0.5,
+      "hit@3": 0.8333333333333334,
+      "hit@5": 0.8333333333333334
+    },
+    "Warranty Duration": {
+      "n_present": 10,
+      "hit@1": 0.7,
+      "hit@3": 0.7,
+      "hit@5": 0.9
+    },
+    "Audit Rights": {
+      "n_present": 22,
+      "hit@1": 0.8636363636363636,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Competitive Restriction Exception": {
+      "n_present": 8,
+      "hit@1": 0.125,
+      "hit@3": 0.625,
+      "hit@5": 0.875
+    },
+    "Covenant Not To Sue": {
+      "n_present": 13,
+      "hit@1": 0.9230769230769231,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Exclusivity": {
+      "n_present": 19,
+      "hit@1": 0.7368421052631579,
+      "hit@3": 0.8947368421052632,
+      "hit@5": 0.9473684210526315
+    },
+    "Insurance": {
+      "n_present": 21,
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.9047619047619048,
+      "hit@5": 1.0
+    },
+    "No-Solicit Of Customers": {
+      "n_present": 5,
+      "hit@1": 0.8,
+      "hit@3": 0.8,
+      "hit@5": 0.8
+    },
+    "No-Solicit Of Employees": {
+      "n_present": 14,
+      "hit@1": 0.8571428571428571,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Non-Compete": {
+      "n_present": 13,
+      "hit@1": 0.6923076923076923,
+      "hit@3": 0.7692307692307693,
+      "hit@5": 0.8461538461538461
+    },
+    "Renewal Term": {
+      "n_present": 22,
+      "hit@1": 0.8636363636363636,
+      "hit@3": 0.9545454545454546,
+      "hit@5": 0.9545454545454546
+    },
+    "Rofr/Rofo/Rofn": {
+      "n_present": 13,
+      "hit@1": 0.8461538461538461,
+      "hit@3": 0.9230769230769231,
+      "hit@5": 0.9230769230769231
+    },
+    "Minimum Commitment": {
+      "n_present": 14,
+      "hit@1": 0.7142857142857143,
+      "hit@3": 0.7857142857142857,
+      "hit@5": 0.8571428571428571
+    },
+    "Revenue/Profit Sharing": {
+      "n_present": 17,
+      "hit@1": 0.7647058823529411,
+      "hit@3": 0.8235294117647058,
+      "hit@5": 0.8235294117647058
+    },
+    "Ip Ownership Assignment": {
+      "n_present": 16,
+      "hit@1": 0.6875,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Joint Ip Ownership": {
+      "n_present": 3,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Termination For Convenience": {
+      "n_present": 20,
+      "hit@1": 0.85,
+      "hit@3": 0.9,
+      "hit@5": 0.95
+    },
+    "Affiliate License-Licensee": {
+      "n_present": 9,
+      "hit@1": 0.4444444444444444,
+      "hit@3": 0.7777777777777778,
+      "hit@5": 1.0
+    },
+    "Affiliate License-Licensor": {
+      "n_present": 3,
+      "hit@1": 0.3333333333333333,
+      "hit@3": 0.6666666666666666,
+      "hit@5": 0.6666666666666666
+    },
+    "Irrevocable Or Perpetual License": {
+      "n_present": 7,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Liquidated Damages": {
+      "n_present": 6,
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.6666666666666666,
+      "hit@5": 1.0
+    },
+    "Most Favored Nation": {
+      "n_present": 4,
+      "hit@1": 0.75,
+      "hit@3": 0.75,
+      "hit@5": 0.75
+    },
+    "Third Party Beneficiary": {
+      "n_present": 1,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Volume Restriction": {
+      "n_present": 6,
+      "hit@1": 0.6666666666666666,
+      "hit@3": 0.8333333333333334,
+      "hit@5": 0.8333333333333334
+    },
+    "Notice Period To Terminate Renewal": {
+      "n_present": 16,
+      "hit@1": 0.875,
+      "hit@3": 0.9375,
+      "hit@5": 1.0
+    },
+    "Change Of Control": {
+      "n_present": 17,
+      "hit@1": 0.8823529411764706,
+      "hit@3": 0.9411764705882353,
+      "hit@5": 0.9411764705882353
+    },
+    "Source Code Escrow": {
+      "n_present": 3,
+      "hit@1": 0.6666666666666666,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    },
+    "Unlimited/All-You-Can-Eat-License": {
+      "n_present": 1,
+      "hit@1": 0.0,
+      "hit@3": 0.0,
+      "hit@5": 1.0
+    },
+    "Non-Disparagement": {
+      "n_present": 4,
+      "hit@1": 0.25,
+      "hit@3": 0.75,
+      "hit@5": 0.75
+    },
+    "Price Restrictions": {
+      "n_present": 2,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@5": 1.0
+    }
+  }
+}

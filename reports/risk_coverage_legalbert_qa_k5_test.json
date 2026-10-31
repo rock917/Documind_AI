@@ -1,0 +1,13 @@
+{
+  "n_examples": 4182,
+  "n_answerable": 1244,
+  "match_f1": 0.5,
+  "area_under_risk_coverage": 0.44267738820048075,
+  "at_threshold": {
+    "threshold": 8.69,
+    "coverage": 0.26398852223816355,
+    "risk": 0.19746376811594202,
+    "recall": 0.7122186495176849,
+    "n_outputs": 1104
+  }
+}

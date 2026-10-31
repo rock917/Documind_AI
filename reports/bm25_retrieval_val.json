@@ -1,0 +1,177 @@
+{
+  "split": "val",
+  "n_present": 722,
+  "chunk_size": 120,
+  "chunk_stride": 60,
+  "mean_chunks_per_contract": 148.2941176470588,
+  "examples_with_no_relevant_chunk": 0,
+  "recall": {
+    "@1": {
+      "point": 0.3476454293628809,
+      "lo": 0.31672892720306517,
+      "hi": 0.381160186859554
+    },
+    "@3": {
+      "point": 0.4930747922437673,
+      "lo": 0.454661558109834,
+      "hi": 0.5333333333333333
+    },
+    "@5": {
+      "point": 0.5761772853185596,
+      "lo": 0.5323229578027244,
+      "hi": 0.6154867463383952
+    },
+    "@10": {
+      "point": 0.685595567867036,
+      "lo": 0.6499287235010126,
+      "hi": 0.7236883395727813
+    },
+    "@20": {
+      "point": 0.8060941828254847,
+      "lo": 0.7692185514612453,
+      "hi": 0.8465417506350106
+    }
+  },
+  "random_recall": {
+    "@1": 0.0283457862512073,
+    "@3": 0.07966721512839106,
+    "@5": 0.12702892150957912,
+    "@10": 0.23081081731782505,
+    "@20": 0.3919514693959783
+  },
+  "mrr": 0.4557977458262896,
+  "per_category_recall@5": {
+    "Competitive Restriction Exception": {
+      "n_present": 8,
+      "recall@5": 0.0
+    },
+    "Parties": {
+      "n_present": 51,
+      "recall@5": 0.0784313725490196
+    },
+    "Volume Restriction": {
+      "n_present": 6,
+      "recall@5": 0.16666666666666666
+    },
+    "Covenant Not To Sue": {
+      "n_present": 13,
+      "recall@5": 0.23076923076923078
+    },
+    "Non-Compete": {
+      "n_present": 13,
+      "recall@5": 0.23076923076923078
+    },
+    "Revenue/Profit Sharing": {
+      "n_present": 17,
+      "recall@5": 0.23529411764705882
+    },
+    "Agreement Date": {
+      "n_present": 45,
+      "recall@5": 0.28888888888888886
+    },
+    "Effective Date": {
+      "n_present": 40,
+      "recall@5": 0.3
+    },
+    "Liquidated Damages": {
+      "n_present": 6,
+      "recall@5": 0.3333333333333333
+    },
+    "Document Name": {
+      "n_present": 51,
+      "recall@5": 0.37254901960784315
+    },
+    "No-Solicit Of Customers": {
+      "n_present": 5,
+      "recall@5": 0.4
+    },
+    "Exclusivity": {
+      "n_present": 19,
+      "recall@5": 0.47368421052631576
+    },
+    "Minimum Commitment": {
+      "n_present": 14,
+      "recall@5": 0.5
+    },
+    "Ip Ownership Assignment": {
+      "n_present": 16,
+      "recall@5": 0.5
+    },
+    "License Grant": {
+      "n_present": 21,
+      "recall@5": 0.5714285714285714
+    },
+    "Post-Termination Services": {
+      "n_present": 26,
+      "recall@5": 0.5769230769230769
+    },
+    "Warranty Duration": {
+      "n_present": 10,
+      "recall@5": 0.6
+    },
+    "Affiliate License-Licensee": {
+      "n_present": 9,
+      "recall@5": 0.6666666666666666
+    },
+    "Expiration Date": {
+      "n_present": 42,
+      "recall@5": 0.7142857142857143
+    },
+    "Cap On Liability": {
+      "n_present": 25,
+      "recall@5": 0.72
+    },
+    "No-Solicit Of Employees": {
+      "n_present": 14,
+      "recall@5": 0.7857142857142857
+    },
+    "Insurance": {
+      "n_present": 21,
+      "recall@5": 0.8095238095238095
+    },
+    "Governing Law": {
+      "n_present": 48,
+      "recall@5": 0.8125
+    },
+    "Notice Period To Terminate Renewal": {
+      "n_present": 16,
+      "recall@5": 0.8125
+    },
+    "Renewal Term": {
+      "n_present": 22,
+      "recall@5": 0.8181818181818182
+    },
+    "Rofr/Rofo/Rofn": {
+      "n_present": 13,
+      "recall@5": 0.8461538461538461
+    },
+    "Termination For Convenience": {
+      "n_present": 20,
+      "recall@5": 0.85
+    },
+    "Audit Rights": {
+      "n_present": 22,
+      "recall@5": 0.8636363636363636
+    },
+    "Change Of Control": {
+      "n_present": 17,
+      "recall@5": 0.8823529411764706
+    },
+    "Anti-Assignment": {
+      "n_present": 40,
+      "recall@5": 0.925
+    },
+    "Non-Transferable License": {
+      "n_present": 18,
+      "recall@5": 0.9444444444444444
+    },
+    "Uncapped Liability": {
+      "n_present": 6,
+      "recall@5": 1.0
+    },
+    "Irrevocable Or Perpetual License": {
+      "n_present": 7,
+      "recall@5": 1.0
+    }
+  }
+}

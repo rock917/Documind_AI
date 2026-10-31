@@ -1,0 +1,369 @@
+{
+  "n_present": 722,
+  "n_absent": 1369,
+  "threshold": 8.69,
+  "present_error_types": {
+    "hit": 588,
+    "wrong_place": 121,
+    "overlap_too_short": 9,
+    "overlap_too_long": 4,
+    "no_prediction": 0
+  },
+  "false_alarms_at_threshold": 55,
+  "false_alarm_rate_among_absent": 0.04017531044558072,
+  "false_alarms_by_category": {
+    "Uncapped Liability": 8,
+    "Minimum Commitment": 5,
+    "Notice Period To Terminate Renewal": 4,
+    "Revenue/Profit Sharing": 4,
+    "Cap On Liability": 4,
+    "Audit Rights": 3,
+    "Expiration Date": 3,
+    "Competitive Restriction Exception": 3,
+    "Unlimited/All-You-Can-Eat-License": 2,
+    "Effective Date": 2,
+    "Exclusivity": 2,
+    "Third Party Beneficiary": 2,
+    "Renewal Term": 2,
+    "Change Of Control": 1,
+    "Price Restrictions": 1,
+    "Agreement Date": 1,
+    "Non-Compete": 1,
+    "Non-Transferable License": 1,
+    "Volume Restriction": 1,
+    "Termination For Convenience": 1,
+    "No-Solicit Of Customers": 1,
+    "No-Solicit Of Employees": 1,
+    "Warranty Duration": 1,
+    "Post-Termination Services": 1
+  },
+  "per_category": {
+    "Agreement Date": {
+      "n_present": 45,
+      "hit_rate": 0.9333333333333333,
+      "wrong_place_rate": 0.044444444444444446,
+      "overlap_rate": 0.022222222222222223
+    },
+    "Anti-Assignment": {
+      "n_present": 40,
+      "hit_rate": 0.925,
+      "wrong_place_rate": 0.075,
+      "overlap_rate": 0.0
+    },
+    "Cap On Liability": {
+      "n_present": 25,
+      "hit_rate": 0.88,
+      "wrong_place_rate": 0.08,
+      "overlap_rate": 0.04
+    },
+    "Document Name": {
+      "n_present": 51,
+      "hit_rate": 0.9607843137254902,
+      "wrong_place_rate": 0.0196078431372549,
+      "overlap_rate": 0.0196078431372549
+    },
+    "Effective Date": {
+      "n_present": 40,
+      "hit_rate": 0.65,
+      "wrong_place_rate": 0.35,
+      "overlap_rate": 0.0
+    },
+    "Expiration Date": {
+      "n_present": 42,
+      "hit_rate": 0.8571428571428571,
+      "wrong_place_rate": 0.14285714285714285,
+      "overlap_rate": 0.0
+    },
+    "Governing Law": {
+      "n_present": 48,
+      "hit_rate": 1.0,
+      "wrong_place_rate": 0.0,
+      "overlap_rate": 0.0
+    },
+    "License Grant": {
+      "n_present": 21,
+      "hit_rate": 0.8571428571428571,
+      "wrong_place_rate": 0.14285714285714285,
+      "overlap_rate": 0.0
+    },
+    "Non-Transferable License": {
+      "n_present": 18,
+      "hit_rate": 0.5555555555555556,
+      "wrong_place_rate": 0.4444444444444444,
+      "overlap_rate": 0.0
+    },
+    "Parties": {
+      "n_present": 51,
+      "hit_rate": 0.9215686274509803,
+      "wrong_place_rate": 0.0196078431372549,
+      "overlap_rate": 0.058823529411764705
+    },
+    "Post-Termination Services": {
+      "n_present": 26,
+      "hit_rate": 0.6153846153846154,
+      "wrong_place_rate": 0.38461538461538464,
+      "overlap_rate": 0.0
+    },
+    "Uncapped Liability": {
+      "n_present": 6,
+      "hit_rate": 0.5,
+      "wrong_place_rate": 0.3333333333333333,
+      "overlap_rate": 0.16666666666666666
+    },
+    "Warranty Duration": {
+      "n_present": 10,
+      "hit_rate": 0.7,
+      "wrong_place_rate": 0.3,
+      "overlap_rate": 0.0
+    },
+    "Audit Rights": {
+      "n_present": 22,
+      "hit_rate": 0.8636363636363636,
+      "wrong_place_rate": 0.13636363636363635,
+      "overlap_rate": 0.0
+    },
+    "Competitive Restriction Exception": {
+      "n_present": 8,
+      "hit_rate": 0.125,
+      "wrong_place_rate": 0.875,
+      "overlap_rate": 0.0
+    },
+    "Covenant Not To Sue": {
+      "n_present": 13,
+      "hit_rate": 0.9230769230769231,
+      "wrong_place_rate": 0.07692307692307693,
+      "overlap_rate": 0.0
+    },
+    "Exclusivity": {
+      "n_present": 19,
+      "hit_rate": 0.7368421052631579,
+      "wrong_place_rate": 0.2631578947368421,
+      "overlap_rate": 0.0
+    },
+    "Insurance": {
+      "n_present": 21,
+      "hit_rate": 0.6666666666666666,
+      "wrong_place_rate": 0.23809523809523808,
+      "overlap_rate": 0.09523809523809523
+    },
+    "No-Solicit Of Customers": {
+      "n_present": 5,
+      "hit_rate": 0.8,
+      "wrong_place_rate": 0.2,
+      "overlap_rate": 0.0
+    },
+    "No-Solicit Of Employees": {
+      "n_present": 14,
+      "hit_rate": 0.8571428571428571,
+      "wrong_place_rate": 0.14285714285714285,
+      "overlap_rate": 0.0
+    },
+    "Non-Compete": {
+      "n_present": 13,
+      "hit_rate": 0.6923076923076923,
+      "wrong_place_rate": 0.3076923076923077,
+      "overlap_rate": 0.0
+    },
+    "Renewal Term": {
+      "n_present": 22,
+      "hit_rate": 0.8636363636363636,
+      "wrong_place_rate": 0.09090909090909091,
+      "overlap_rate": 0.045454545454545456
+    },
+    "Rofr/Rofo/Rofn": {
+      "n_present": 13,
+      "hit_rate": 0.8461538461538461,
+      "wrong_place_rate": 0.15384615384615385,
+      "overlap_rate": 0.0
+    },
+    "Minimum Commitment": {
+      "n_present": 14,
+      "hit_rate": 0.7142857142857143,
+      "wrong_place_rate": 0.2857142857142857,
+      "overlap_rate": 0.0
+    },
+    "Revenue/Profit Sharing": {
+      "n_present": 17,
+      "hit_rate": 0.7647058823529411,
+      "wrong_place_rate": 0.17647058823529413,
+      "overlap_rate": 0.058823529411764705
+    },
+    "Ip Ownership Assignment": {
+      "n_present": 16,
+      "hit_rate": 0.6875,
+      "wrong_place_rate": 0.3125,
+      "overlap_rate": 0.0
+    },
+    "Joint Ip Ownership": {
+      "n_present": 3,
+      "hit_rate": 1.0,
+      "wrong_place_rate": 0.0,
+      "overlap_rate": 0.0
+    },
+    "Termination For Convenience": {
+      "n_present": 20,
+      "hit_rate": 0.85,
+      "wrong_place_rate": 0.1,
+      "overlap_rate": 0.05
+    },
+    "Affiliate License-Licensee": {
+      "n_present": 9,
+      "hit_rate": 0.4444444444444444,
+      "wrong_place_rate": 0.5555555555555556,
+      "overlap_rate": 0.0
+    },
+    "Affiliate License-Licensor": {
+      "n_present": 3,
+      "hit_rate": 0.3333333333333333,
+      "wrong_place_rate": 0.6666666666666666,
+      "overlap_rate": 0.0
+    },
+    "Irrevocable Or Perpetual License": {
+      "n_present": 7,
+      "hit_rate": 1.0,
+      "wrong_place_rate": 0.0,
+      "overlap_rate": 0.0
+    },
+    "Liquidated Damages": {
+      "n_present": 6,
+      "hit_rate": 0.6666666666666666,
+      "wrong_place_rate": 0.16666666666666666,
+      "overlap_rate": 0.16666666666666666
+    },
+    "Most Favored Nation": {
+      "n_present": 4,
+      "hit_rate": 0.75,
+      "wrong_place_rate": 0.25,
+      "overlap_rate": 0.0
+    },
+    "Third Party Beneficiary": {
+      "n_present": 1,
+      "hit_rate": 1.0,
+      "wrong_place_rate": 0.0,
+      "overlap_rate": 0.0
+    },
+    "Volume Restriction": {
+      "n_present": 6,
+      "hit_rate": 0.6666666666666666,
+      "wrong_place_rate": 0.3333333333333333,
+      "overlap_rate": 0.0
+    },
+    "Notice Period To Terminate Renewal": {
+      "n_present": 16,
+      "hit_rate": 0.875,
+      "wrong_place_rate": 0.125,
+      "overlap_rate": 0.0
+    },
+    "Change Of Control": {
+      "n_present": 17,
+      "hit_rate": 0.8823529411764706,
+      "wrong_place_rate": 0.11764705882352941,
+      "overlap_rate": 0.0
+    },
+    "Source Code Escrow": {
+      "n_present": 3,
+      "hit_rate": 0.6666666666666666,
+      "wrong_place_rate": 0.3333333333333333,
+      "overlap_rate": 0.0
+    },
+    "Unlimited/All-You-Can-Eat-License": {
+      "n_present": 1,
+      "hit_rate": 0.0,
+      "wrong_place_rate": 1.0,
+      "overlap_rate": 0.0
+    },
+    "Non-Disparagement": {
+      "n_present": 4,
+      "hit_rate": 0.25,
+      "wrong_place_rate": 0.75,
+      "overlap_rate": 0.0
+    },
+    "Price Restrictions": {
+      "n_present": 2,
+      "hit_rate": 1.0,
+      "wrong_place_rate": 0.0,
+      "overlap_rate": 0.0
+    }
+  },
+  "median_pred_words": 32.0,
+  "median_shortest_gold_words": 27.0,
+  "samples": {
+    "wrong_place": [
+      {
+        "category": "Rofr/Rofo/Rofn",
+        "score": 8.02,
+        "gold": "MKOS will have 30-days from receipt of information to determine if they wish to go forward with the technology license. UTEK, after 30 days, shall have the right to present the technology to other cli...",
+        "predicted": "At MKOS's request and upon mutual agreement between MKOS and UTEK, UTEK will negotiate and seek to acquire a license to the requested technology for subsequent sale to and acquisition by MKOS."
+      },
+      {
+        "category": "Most Favored Nation",
+        "score": -5.82,
+        "gold": "With respect to any [***],",
+        "predicted": "If, at any time during the Term, Ginkgo has purchased from BLI, in the aggregate, [***] ([***]) or more Beacon Optofluidic Machines, then:"
+      },
+      {
+        "category": "Competitive Restriction Exception",
+        "score": 10.6,
+        "gold": "AIRSOPURE covenants and agrees that the restrictions set forth above in Paragraphs 16.02.C and 16.03 shall not apply to ownership by You of less than a 5% beneficial interest in the outstanding equity...",
+        "predicted": "You covenant and agree that during the term of this Agreement, and subject to the post-termination provisions contained herein, You shall not, except as otherwise approved in writing by AIRSOPURE, eit..."
+      }
+    ],
+    "overlap_too_short": [
+      {
+        "category": "Liquidated Damages",
+        "score": 1.8,
+        "gold": "In the event of termination of this Agreement and without limitation of Fox's rights and remedies all of which are expressly reserved, the following payment penalties shall apply: (i) if termination o...",
+        "predicted": "In the event of termination of this Agreement and without limitation of Fox's rights and remedies all of which are expressly reserved, the following payment penalties shall apply:"
+      },
+      {
+        "category": "Agreement Date",
+        "score": 13.86,
+        "gold": "This Consulting Agreement (the \"Agreement\") is made and entered into as of this 2nd day of January 2020,",
+        "predicted": "2nd day of January 2020"
+      },
+      {
+        "category": "Uncapped Liability",
+        "score": 3.75,
+        "gold": "Except for a breach of Section 11 (\"Confidentiality\"), and without limiting a Party's indemnification obligations hereunder, in no event shall either Party be liable to the other Party in any manner f...",
+        "predicted": "Except for a breach of Section 11 (\"Confidentiality\"),"
+      }
+    ],
+    "overlap_too_long": [
+      {
+        "category": "Document Name",
+        "score": 10.77,
+        "gold": "JOINT DEVELOPMENT AGREEMENT",
+        "predicted": "JOINT DEVELOPMENT AGREEMENT between FUELCELL ENERGY, INC. and EXXONMOBIL RESEARCH AND ENGINEERING COMPANY Source: FUELCELL ENERGY INC, 8-K, 11/6/2019 TABLE OF CONTENTS ARTICLE 1 - DEFINITIONS 1 ARTICL..."
+      },
+      {
+        "category": "Parties",
+        "score": 10.77,
+        "gold": "KALLO",
+        "predicted": "KALLO Inc. STRATEGIC ALLIANCE AGREEMENT MOBILECARE STRATEGIC ALLIANCE AGREEMENT - MOBILE CARE"
+      },
+      {
+        "category": "Parties",
+        "score": 9.12,
+        "gold": "Compass Point Research & Trading, LLC",
+        "predicted": "BLUEROCK RESIDENTIAL GROWTH REIT, INC. 8.250% Series A Cumulative Redeemable Preferred Stock AGENCY AGREEMENT May 25, 2016 Compass Point Research & Trading, LLC"
+      }
+    ],
+    "false_alarm": [
+      {
+        "category": "Notice Period To Terminate Renewal",
+        "score": 14.44,
+        "predicted": "After the Initial Term, this Agreement may only be renewed if authorized officers of ARGO and YEC agree in writing at least thirty (30) days before the expiration of the Initial Term or any renewal te..."
+      },
+      {
+        "category": "Third Party Beneficiary",
+        "score": 13.36,
+        "predicted": "Nothing in this Agreement will provide any benefit to any third party or entitle any third party to any claim, cause of action, remedy or right of any kind."
+      },
+      {
+        "category": "Audit Rights",
+        "score": 10.86,
+        "predicted": "Charterer's representatives may board any vessel used under this Agreement at any convenient place to observe cargo-handling operations, to inspect logs and certificates, and to confirm that Owner is ..."
+      }
+    ]
+  }
+}

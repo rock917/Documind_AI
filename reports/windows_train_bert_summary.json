@@ -1,0 +1,22 @@
+{
+  "split": "train",
+  "tokenizer": "bert-base-uncased",
+  "max_length": 384,
+  "stride": 128,
+  "p_hard": 0.1,
+  "p_easy": 0.07,
+  "examples_processed": 14637,
+  "windows_before_sampling": {
+    "negative": 804043,
+    "positive": 8728,
+    "partial": 3381
+  },
+  "windows_kept": {
+    "negative": 65617,
+    "positive": 8728
+  },
+  "answered_examples_with_no_positive_window": 55,
+  "positive_windows_checked_for_roundtrip": 8728,
+  "roundtrip_mean_f1": 0.9989,
+  "roundtrip_windows_with_f1_below_1": 58
+}

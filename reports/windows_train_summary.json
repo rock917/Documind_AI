@@ -1,0 +1,22 @@
+{
+  "split": "train",
+  "tokenizer": "nlpaueb/legal-bert-base-uncased",
+  "max_length": 384,
+  "stride": 128,
+  "p_hard": 0.1,
+  "p_easy": 0.07,
+  "examples_processed": 14637,
+  "windows_before_sampling": {
+    "negative": 783902,
+    "positive": 8694,
+    "partial": 3285
+  },
+  "windows_kept": {
+    "negative": 63998,
+    "positive": 8694
+  },
+  "answered_examples_with_no_positive_window": 53,
+  "positive_windows_checked_for_roundtrip": 8694,
+  "roundtrip_mean_f1": 0.999,
+  "roundtrip_windows_with_f1_below_1": 54
+}

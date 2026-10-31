@@ -18,3 +18,8 @@ faiss-cpu==1.15.1
 
 # Tests
 pytest==9.1.1
+# Web app and PDF
+fastapi==0.162.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+pymupdf==2.0

@@ -17,21 +17,22 @@ The core is a Legal-BERT model fine-tuned for extractive question answering **wi
 
 1. [Links](#links)
 2. [Features](#features)
-3. [Results](#results)
-4. [Architecture](#architecture)
-5. [Design decisions and trade-offs](#design-decisions-and-trade-offs)
-6. [Tech stack](#tech-stack)
-7. [Quick start](#quick-start-local)
-8. [Configuration](#configuration)
-9. [Docker and deployment](#docker-and-deployment)
-10. [API](#api)
-11. [Reproducing the training and evaluation](#reproducing-the-training-and-evaluation)
-12. [Testing](#testing)
-13. [Project layout](#project-layout)
-14. [Security and privacy](#security-and-privacy)
-15. [Limitations](#limitations)
-16. [Possible next steps](#possible-next-steps)
-17. [Acknowledgements](#acknowledgements)
+3. [Screenshots](#screenshots)
+4. [Results](#results)
+5. [Architecture](#architecture)
+6. [Design decisions and trade-offs](#design-decisions-and-trade-offs)
+7. [Tech stack](#tech-stack)
+8. [Quick start](#quick-start-local)
+9. [Configuration](#configuration)
+10. [Docker and deployment](#docker-and-deployment)
+11. [API](#api)
+12. [Reproducing the training and evaluation](#reproducing-the-training-and-evaluation)
+13. [Testing](#testing)
+14. [Project layout](#project-layout)
+15. [Security and privacy](#security-and-privacy)
+16. [Limitations](#limitations)
+17. [Possible next steps](#possible-next-steps)
+18. [Acknowledgements](#acknowledgements)
 
 ## Links
 
@@ -48,6 +49,26 @@ The core is a Legal-BERT model fine-tuned for extractive question answering **wi
 - **Any document type.** PDF, Word (`.docx`, `.doc`), ODT and RTF (converted with LibreOffice), and scanned PDFs (OCR with Tesseract, up to 100 pages).
 - **Reports.** A readable PDF report of everything found, and a JSON export of the raw results.
 - **Interface.** A single-page web UI with a light/dark theme, history-based Back/Forward navigation and a live progress bar.
+
+## Screenshots
+
+### Landing page
+
+Upload a contract, or skip the clause checks and ask your own questions.
+
+![DocuMind AI landing page](docs/screenshots/landing.png)
+
+### Results
+
+Clause types found are listed on the left with their scores. The middle panel shows the evidence passages, and the right panel shows the original page with the passage highlighted.
+
+![Results page with the clause list, evidence and highlighted PDF page](docs/screenshots/results.png)
+
+### Ask mode
+
+Ask a question about any document. The answer cites the pages it came from, or says it was not found.
+
+![Ask mode answering a question with page citations](docs/screenshots/ask.png)
 
 ## Results
 

@@ -393,6 +393,20 @@ Dockerfile    CPU image for deployment
 - Authentication and per-user storage for a permanent public deployment.
 - Persistent job history.
 
+## Try a sample contract
+
+The front page has a **Try a sample contract** button. It opens a real contract from the CUAD test split (a supply agreement the model never saw in training) that was analysed in advance, so the viewer opens instantly, even on the slow CPU demo server. Open a clause, then check the highlighted passage on the page.
+
+To make your own sample, build a PDF from a test contract and analyse it once (this uses your GPU if you have one):
+
+```
+python -m scripts.make_sample_pdf --list
+python -m scripts.make_sample_pdf --index 0
+python -m scripts.make_sample samples_src\cuad-sample.pdf --name cuad-sample
+```
+
+Every folder under `samples/` (an `original.pdf` and a `results.json`) is offered as a sample. The contract text comes from [CUAD](https://www.atticusprojectai.org/cuad), released under CC BY 4.0 by The Atticus Project.
+
 ## Acknowledgements
 
 - [CUAD](https://www.atticusprojectai.org/cuad), the Contract Understanding Atticus Dataset by The Atticus Project

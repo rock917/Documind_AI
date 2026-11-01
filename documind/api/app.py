@@ -66,6 +66,22 @@ class JobManager:
         self.queue = queue.Queue()
         threading.Thread(target=self._worker, daemon=True).start()
 
+    def add_sample(self, folder):
+        """Register a pre-analysed sample (original.pdf and results.json in `folder`) as a finished job."""
+        folder = Path(folder)
+        pdf_path, res_path = folder / "original.pdf", folder / "results.json"
+        if not (pdf_path.is_file() and res_path.is_file()):
+            return None
+        payload = json.loads(res_path.read_text(encoding="utf-8"))
+        doc = extract_pdf(pdf_path)
+        doc_id = "sample-" + folder.name
+        rec = {"id": doc_id, "filename": payload.get("filename") or "sample.pdf", "pdf_path": pdf_path, "doc": doc, "state": "done",
+               "done": len(payload["results"]), "total": len(payload["results"]), "current": None, "error": None,
+               "results": payload["results"], "seconds": payload.get("seconds"), "needs_ocr": False, "ocr": False,
+               "analyze": True, "retriever": None, "sample": True}
+        self.jobs[doc_id] = rec
+        return rec
+
     def submit(self, data, filename, analyze=True):
         doc_id = uuid.uuid4().hex
         folder = self.root / doc_id
@@ -97,7 +113,7 @@ class JobManager:
         d = rec["doc"]
         return {"id": rec["id"], "filename": rec["filename"], "n_pages": d["n_pages"], "n_words": d["n_words"],
                 "state": rec["state"], "done": rec["done"], "total": rec["total"], "current": rec["current"],
-                "error": rec["error"], "seconds": rec["seconds"], "page_sizes": d["page_sizes"], "ocr": rec.get("ocr", False), "analyze": rec.get("analyze", True)}
+                "error": rec["error"], "seconds": rec["seconds"], "page_sizes": d["page_sizes"], "ocr": rec.get("ocr", False), "analyze": rec.get("analyze", True), "sample": rec.get("sample", False)}
 
     def _worker(self):
         while True:
@@ -131,9 +147,19 @@ class JobManager:
                 rec["state"] = "error"
 
 
-def create_app(finder, storage_dir="storage", web_dir=None, general=None):
+def create_app(finder, storage_dir="storage", web_dir=None, general=None, samples_dir="samples"):
     app = FastAPI(title="DocuMind AI")
     jobs = JobManager(finder, storage_dir)
+    sample_ids = []
+    if samples_dir and Path(samples_dir).is_dir():
+        for folder in sorted(p for p in Path(samples_dir).iterdir() if p.is_dir()):
+            try:
+                rec = jobs.add_sample(folder)
+            except Exception as exc:  # a broken sample must not stop the server
+                print(f"Skipping sample {folder.name}: {exc}")
+                continue
+            if rec:
+                sample_ids.append(rec["id"])
     web_index = Path(web_dir or Path(__file__).resolve().parent.parent / "web") / "index.html"
 
     def get_rec(doc_id):
@@ -208,6 +234,11 @@ def create_app(finder, storage_dir="storage", web_dir=None, general=None):
         if general is None:
             return {"available": False, "model": None, "key_variable": "GROQ_API_KEY"}
         return general.info()
+
+    @app.get("/api/samples")
+    def samples():
+        return {"samples": [{"id": sid, "filename": jobs.jobs[sid]["filename"], "n_pages": jobs.jobs[sid]["doc"]["n_pages"]}
+                            for sid in sample_ids]}
 
     @app.get("/api/about")
     def about():

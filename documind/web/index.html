@@ -290,6 +290,7 @@ details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; fo
     <div class="actions">
       <button class="btn primary" id="btnChoose">Choose a contract</button>
       <button class="btn" id="btnGeneral" title="Skips the 41 clause checks and lets you ask your own questions, answered by Groq with page citations">Ask questions about any document</button>
+      <button class="btn" id="btnSample" type="button" hidden title="Opens a real contract that was analysed in advance, so you can try the viewer instantly">Try a sample contract</button>
     </div>
     <div class="feats">
       <div class="feat"><b>The exact clause and page</b><span>Each clause type is highlighted on the original page, not paraphrased.</span></div>
@@ -449,6 +450,26 @@ details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; fo
     poll();
   }
 
+  async function loadSamples() {
+    try {
+      const r = await fetch("/api/samples");
+      if (!r.ok) return;
+      const j = await r.json();
+      if (j.samples && j.samples.length) { state.sample = j.samples[0]; $("btnSample").hidden = false; }
+    } catch (e) { /* the button simply stays hidden */ }
+  }
+
+  function openSample() {
+    if (!state.sample) return;
+    hideError();
+    clearInterval(state.timer);
+    state.docId = state.sample.id; state.running = false; state.resultsReady = false; state.parked = false;
+    state.asks = []; state.askIdx = 0; state.sourceIdx = 0; state.selected = null; state.passageIdx = 0; state.page = 1; state.mode = "clauses";
+    $("modes").hidden = false; $("searchBox").hidden = false; $("list").hidden = false; $("askHistory").hidden = true;
+    $("modeClauses").setAttribute("aria-pressed", "true"); $("modeAsk").setAttribute("aria-pressed", "false");
+    loadResults();
+  }
+
   function setProgress(done, total, text) {
     const pct = total ? Math.round((100 * done) / total) : 0;
     $("progFill").style.width = pct + "%";
@@ -496,8 +517,9 @@ details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; fo
       el("strong", "", state.doc.analyze === false ? "Ask questions about this document" : found + " of " + state.results.length + " clause types found"),
       el("span", "", state.doc.filename),
       el("span", "", state.doc.n_pages + " pages"),
+      el("span", "", state.doc.sample ? "sample contract, analysed in advance" : ""),
       el("span", "", state.doc.ocr ? "text recognised by OCR, so it may contain errors" : ""),
-      el("span", "", state.doc.seconds ? "analysed in " + state.doc.seconds + " s" : ""),
+      el("span", "", state.doc.seconds && !state.doc.sample ? "analysed in " + state.doc.seconds + " s" : ""),
       el("span", "", state.doc.analyze === false ? "" : "A clause counts as found at a score of " + state.threshold + " or higher.")
     );
   }
@@ -748,6 +770,7 @@ details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; fo
   $("modeAsk").addEventListener("click", () => setMode("ask"));
   loadGeneralInfo();
   loadAbout();
+  loadSamples();
   $("file").addEventListener("change", (e) => { const f = e.target.files[0]; e.target.value = ""; upload(f); });
   $("sheet").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("file").click(); } });
   for (const ev of ["dragenter", "dragover"]) document.addEventListener(ev, (e) => { e.preventDefault(); $("sheet").classList.add("drag"); });
@@ -760,6 +783,7 @@ details.nf > summary { padding: 12px 14px; cursor: pointer; font-weight: 600; fo
   history.replaceState({ view: "viewUpload" }, "", location.pathname + location.search);
   $("btnBack").addEventListener("click", goBack);
   $("btnResume").addEventListener("click", goResume);
+  $("btnSample").addEventListener("click", openSample);
   $("brand").addEventListener("click", goBack);
   $("brand").addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goBack(); } });
   window.addEventListener("popstate", (e) => {

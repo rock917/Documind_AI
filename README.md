@@ -37,7 +37,7 @@ The core is a Legal-BERT model fine-tuned for extractive question answering **wi
 
 - Code: https://github.com/rock917/Documind_AI
 - Model (Legal-BERT fine-tuned on CUAD-QA): https://huggingface.co/TheRock45/documind-legalbert-qa
-- Live demo: http://20.207.196.84 (Azure VM, CPU only). It is switched on only for demos, so the link may not respond. If it times out, ask the author to start it. It uses plain HTTP with no login, and Ask mode is off on the demo server.
+- Live demo: http://20.207.196.84 (Azure VM, CPU only). It is switched on only for demos, so the link may not respond. If it times out, ask the author to start it. Analysing an uploaded contract is slow there (about 22 minutes for a 6-page one). It uses plain HTTP with no login, and Ask mode is off on the demo server.
 
 ## Features
 
@@ -361,7 +361,7 @@ Dockerfile    CPU image for deployment
 - **English commercial contracts only.** Other languages and non-contract documents mostly return "not found". Handwriting is not supported.
 - **Ask mode highlights the whole retrieved chunk**, not the exact answer span, and depends on Groq's free-tier limits.
 - **One document at a time**, with an in-memory job list that resets when the server restarts.
-- **CPU is slow.** The model is fast on a GPU and noticeably slower on a small CPU server.
+- **CPU is slow.** On a local GPU a contract is analysed in seconds. On the 2-vCPU Azure demo server, a 6-page contract took about 22 minutes (1,331 s), so the demo shows the interface and results rather than speed.
 - **Licensing.** PyMuPDF is AGPL-licensed, so a closed-source deployment would need a commercial licence or a different PDF library. CUAD is released under CC BY 4.0.
 
 ## Possible next steps

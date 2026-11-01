@@ -38,7 +38,7 @@ The core is a Legal-BERT model fine-tuned for extractive question answering **wi
 
 - Code: https://github.com/rock917/Documind_AI
 - Model (Legal-BERT fine-tuned on CUAD-QA): https://huggingface.co/TheRock45/documind-legalbert-qa
-- Live demo: http://20.207.196.84 (Azure VM, CPU only). It is switched on only for demos, so the link may not respond. If it times out, ask the author to start it. Analysing an uploaded contract is slow there (about 22 minutes for a 6-page one). It uses plain HTTP with no login, and Ask mode is off on the demo server.
+- Live demo: http://20.207.196.84 (Azure VM, CPU only). It is switched on only for demos, so the link may not respond. If it times out, ask the author to start it. Analysing an uploaded contract is slow there (about 22 minutes for a 6-page one). It uses plain HTTP with no login, and Ask mode is off on the demo server. Click **Try a sample contract** for an instant result on a pre-analysed contract.
 
 ## Features
 
